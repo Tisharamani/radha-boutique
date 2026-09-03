@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Product | Radha Boutique</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="site-header">
+
+    <nav class="navbar">
+
+        <div class="brand">
+            <a href="index.html">
+                <img src="images/logo.png" alt="Radha Boutique">
+            </a>
+        </div>
+
+        <button class="menu-toggle"
+                onclick="toggleMenu()"
+                aria-label="Open menu">
+            ☰
+        </button>
+
+        <ul class="nav-links" id="mobileMenu">
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="shop.html">Shop</a>
+            </li>
+
+            <li>
+                <a href="about.html">About</a>
+            </li>
+
+            <li>
+                <a href="contact.html">Contact</a>
+            </li>
+
+            <li>
+                <a href="wishlist.html">
+                    ❤️ Wishlist
+                </a>
+            </li>
+
+            <li>
+                <a href="cart.html">
+                    🛒 Cart
+                    <span id="cartCount">0</span>
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+
+<!-- ================= PRODUCT DETAILS ================= -->
+
+<main class="product-page">
+
+    <div class="product-detail-container">
+
+        <!-- IMAGE SECTION -->
+
+        <div class="product-gallery">
+
+            <div class="main-product-image">
+                <img id="mainImage"
+                     src=""
+                     alt="Product Image">
+            </div>
+
+            <!-- Only ONE thumbnail container -->
+            <div id="productThumbnails"
+                 class="product-thumbnails">
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT INFORMATION -->
+
+        <div class="product-information">
+
+            <p id="productCategory"
+               class="product-category">
+            </p>
+
+
+            <h1 id="productName">
+                Product Name
+            </h1>
+
+
+            <!-- PRICE -->
+
+            <div class="product-price">
+
+                <span id="productOldPrice"
+                      class="old-price">
+                </span>
+
+                <span id="productPrice"
+                      class="new-price">
+                </span>
+
+            </div>
+
+
+            <!-- DESCRIPTION -->
+
+            <p id="productDescription"
+               class="product-description">
+            </p>
+
+
+            <!-- SIZE -->
+
+            <div class="product-option">
+
+                <h3>Select Size</h3>
+
+                <div id="sizeOptions"
+                     class="size-options">
+                </div>
+
+            </div>
+
+
+            <!-- COLOR -->
+
+            <div id="colorSection"
+                 class="product-option">
+
+                <h3>Select Color</h3>
+
+                <div id="colorOptions"
+                     class="color-options">
+                </div>
+
+            </div>
+
+
+            <!-- BUTTONS -->
+
+            <div class="product-actions">
+
+                <button class="add-cart-large"
+                        onclick="addProductToCart()">
+
+                    🛒 Add to Cart
+
+                </button>
+
+
+                <button class="whatsapp-large"
+                        onclick="orderProductOnWhatsApp()">
+
+                    💬 Order on WhatsApp
+
+                </button>
+
+            </div>
+
+
+            <!-- FEATURES -->
+
+            <div class="product-features">
+
+                <div>
+                    ✨ Premium Quality
+                </div>
+
+                <div>
+                    🚚 Easy Ordering
+                </div>
+
+                <div>
+                    💖 Customer Support
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="site-footer">
+
+    <div class="footer-content">
+
+        <div>
+
+            <h3>Radha Boutique</h3>
+
+            <p>
+                Elegant fashion for every occasion.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h4>Quick Links</h4>
+
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+
+        </div>
+
+
+        <div>
+
+            <h4>Contact</h4>
+
+            <p>
+                📍 Mulund West, Mumbai
+            </p>
+
+            <p>
+                📞 8355907193
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 Radha Boutique. All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="products.js"></script>
+<script src="script.js"></script>
+
+</body>
+
+</html>

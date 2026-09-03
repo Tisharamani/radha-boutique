@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wishlist | Radha Boutique</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <nav class="navbar">
+
+        <div class="brand">
+            <a href="index.html">
+                <img src="images/logo.png" alt="Radha Boutique">
+            </a>
+        </div>
+
+        <button
+            class="menu-toggle"
+            onclick="toggleMenu()"
+            aria-label="Open menu">
+            ☰
+        </button>
+
+        <ul class="nav-links" id="mobileMenu">
+
+            <li><a href="index.html">Home</a></li>
+
+            <li><a href="shop.html">Shop</a></li>
+
+            <li><a href="about.html">About</a></li>
+
+            <li><a href="contact.html">Contact</a></li>
+
+            <li>
+                <a href="wishlist.html">
+                    ❤️ Wishlist
+                </a>
+            </li>
+
+            <li>
+                <a href="cart.html">
+                    🛒 Cart
+                    <span id="cartCount">0</span>
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+    <section class="page-hero">
+
+        <div>
+
+            <p class="eyebrow">
+                YOUR FAVOURITES
+            </p>
+
+            <h1>
+                My Wishlist
+            </h1>
+
+            <p>
+                Save your favourite styles and find them easily later.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="wishlist-section">
+
+        <div
+            id="wishlistItems"
+            class="product-container">
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="site-footer">
+
+    <div class="footer-content">
+
+        <div>
+            <h3>Radha Boutique</h3>
+
+            <p>
+                Elegant fashion for every occasion.
+            </p>
+        </div>
+
+
+        <div>
+
+            <h4>Quick Links</h4>
+
+            <a href="index.html">Home</a>
+
+            <a href="shop.html">Shop</a>
+
+            <a href="about.html">About</a>
+
+            <a href="contact.html">Contact</a>
+
+        </div>
+
+
+        <div>
+
+            <h4>Contact</h4>
+
+            <p>📍 Mulund West, Mumbai</p>
+
+            <p>📞 8355907193</p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 Radha Boutique. All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+<script src="products.js"></script>
+<script src="script.js"></script>
+
+</body>
+
+</html>

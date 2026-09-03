@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Us | Radha Boutique</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <nav class="navbar">
+
+        <div class="brand">
+            <a href="index.html">
+                <img src="images/logo.png" alt="Radha Boutique">
+            </a>
+        </div>
+
+        <button
+            class="menu-toggle"
+            onclick="toggleMenu()"
+            aria-label="Open menu">
+            ☰
+        </button>
+
+        <ul class="nav-links" id="mobileMenu">
+
+            <li><a href="index.html">Home</a></li>
+
+            <li><a href="shop.html">Shop</a></li>
+
+            <li><a href="about.html">About</a></li>
+
+            <li><a href="contact.html">Contact</a></li>
+
+            <li><a href="wishlist.html">❤️ Wishlist</a></li>
+
+            <li>
+                <a href="cart.html">
+                    🛒 Cart
+                    <span id="cartCount">0</span>
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+    <section class="page-hero">
+
+        <div>
+
+            <p class="eyebrow">
+                WE'D LOVE TO HEAR FROM YOU
+            </p>
+
+            <h1>
+                Contact Radha Boutique
+            </h1>
+
+            <p>
+                Have a question about our collection?
+                We're happy to help.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="contact-section">
+
+        <div class="contact-grid">
+
+
+            <!-- CONTACT INFORMATION -->
+
+            <div class="contact-info">
+
+                <p class="eyebrow">
+                    GET IN TOUCH
+                </p>
+
+                <h2>
+                    Visit Our Boutique
+                </h2>
+
+                <p>
+                    Come visit us and explore our latest
+                    fashion collection in person.
+                </p>
+
+
+                <div class="contact-card">
+
+                    <div class="contact-icon">
+                        📍
+                    </div>
+
+                    <div>
+                        <h3>Our Store</h3>
+
+                        <p>
+                            Shop No. 6, Navratna Society,
+                            Opposite Om Jewellers,
+                            RRT Road, Mulund West,
+                            Mumbai
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="contact-card">
+
+                    <div class="contact-icon">
+                        📞
+                    </div>
+
+                    <div>
+
+                        <h3>Phone</h3>
+
+                        <p>
+                            8355907193
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-card">
+
+                    <div class="contact-icon">
+                        💬
+                    </div>
+
+                    <div>
+
+                        <h3>WhatsApp</h3>
+
+                        <p>
+                            Chat with us for
+                            product enquiries and orders.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="https://wa.me/918355907193"
+                    target="_blank"
+                    rel="noopener"
+                    class="whatsapp-large">
+
+                    💬 Chat on WhatsApp
+
+                </a>
+
+            </div>
+
+
+            <!-- CONTACT FORM -->
+
+            <div class="contact-form-box">
+
+                <p class="eyebrow">
+                    SEND A MESSAGE
+                </p>
+
+                <h2>
+                    How Can We Help?
+                </h2>
+
+                <form
+                    onsubmit="sendContactMessage(event)">
+
+                    <div class="form-group">
+
+                        <label for="contactName">
+                            Your Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="contactName"
+                            placeholder="Enter your name"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="contactPhone">
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="contactPhone"
+                            placeholder="Enter your phone number"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="contactMessage">
+                            Message
+                        </label>
+
+                        <textarea
+                            id="contactMessage"
+                            rows="5"
+                            placeholder="Write your message..."
+                            required></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="submit-btn">
+
+                        Send Message
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LOCATION -->
+
+    <section class="visit-banner">
+
+        <div>
+
+            <p class="eyebrow">
+                RADHA BOUTIQUE
+            </p>
+
+            <h2>
+                Your Style, Your Choice
+            </h2>
+
+            <p>
+                Visit us in Mulund West and discover
+                something special for your wardrobe.
+            </p>
+
+            <a
+                href="shop.html"
+                class="shop-btn">
+
+                Shop Collection
+
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="site-footer">
+
+    <div class="footer-content">
+
+        <div>
+
+            <h3>
+                Radha Boutique
+            </h3>
+
+            <p>
+                Elegant fashion for every occasion.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h4>
+                Quick Links
+            </h4>
+
+            <a href="index.html">Home</a>
+
+            <a href="shop.html">Shop</a>
+
+            <a href="about.html">About</a>
+
+            <a href="contact.html">Contact</a>
+
+        </div>
+
+
+        <div>
+
+            <h4>
+                Contact
+            </h4>
+
+            <p>
+                📍 Mulund West, Mumbai
+            </p>
+
+            <p>
+                📞 8355907193
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 Radha Boutique. All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+<script src="products.js"></script>
+<script src="script.js"></script>
+
+
+<script>
+
+function sendContactMessage(event) {
+
+    event.preventDefault();
+
+    const name =
+        document.getElementById("contactName").value.trim();
+
+    const phone =
+        document.getElementById("contactPhone").value.trim();
+
+    const message =
+        document.getElementById("contactMessage").value.trim();
+
+
+    const whatsappMessage =
+        `Hello Radha Boutique!%0A%0A` +
+        `Name: ${encodeURIComponent(name)}%0A` +
+        `Phone: ${encodeURIComponent(phone)}%0A` +
+        `Message: ${encodeURIComponent(message)}`;
+
+
+    window.open(
+        `https://wa.me/918355907193?text=${whatsappMessage}`,
+        "_blank"
+    );
+
+}
+
+</script>
+
+</body>
+
+</html>

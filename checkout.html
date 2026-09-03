@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout | Radha Boutique</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- QR CODE LIBRARY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="site-header">
+
+    <nav class="navbar">
+
+        <div class="brand">
+
+            <a href="index.html">
+
+                <img
+                    src="images/logo.png"
+                    alt="Radha Boutique">
+
+            </a>
+
+        </div>
+
+
+        <button
+            class="menu-toggle"
+            onclick="toggleMenu()"
+            aria-label="Open menu">
+
+            ☰
+
+        </button>
+
+
+        <ul
+            class="nav-links"
+            id="mobileMenu">
+
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="shop.html">
+                    Shop
+                </a>
+            </li>
+
+            <li>
+                <a href="about.html">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a href="contact.html">
+                    Contact
+                </a>
+            </li>
+
+            <li>
+                <a href="wishlist.html">
+                    ❤️ Wishlist
+                </a>
+            </li>
+
+            <li>
+                <a href="cart.html">
+                    🛒 Cart
+                    <span id="cartCount">0</span>
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main>
+
+
+    <!-- PAGE HERO -->
+
+    <section class="page-hero">
+
+        <div>
+
+            <p class="eyebrow">
+                COMPLETE YOUR ORDER
+            </p>
+
+            <h1>
+                Checkout
+            </h1>
+
+            <p>
+                Enter your delivery details and complete your payment.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- CHECKOUT SECTION -->
+
+    <section class="checkout-section">
+
+        <div class="checkout-grid">
+
+
+            <!-- =========================
+                 CUSTOMER DETAILS
+            ========================= -->
+
+            <div class="checkout-form-box">
+
+                <p class="eyebrow">
+                    DELIVERY DETAILS
+                </p>
+
+                <h2>
+                    Your Information
+                </h2>
+
+
+                <form
+                    id="checkoutForm"
+                    onsubmit="placeOrder(event)">
+
+
+                    <!-- NAME -->
+
+                    <div class="form-group">
+
+                        <label for="customerName">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="customerName"
+                            placeholder="Enter your full name"
+                            required>
+
+                    </div>
+
+
+
+                    <!-- PHONE -->
+
+                    <div class="form-group">
+
+                        <label for="customerPhone">
+                            Mobile Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="customerPhone"
+                            placeholder="Enter 10 digit mobile number"
+                            pattern="[0-9]{10}"
+                            maxlength="10"
+                            required>
+
+                    </div>
+
+
+
+                    <!-- ADDRESS -->
+
+                    <div class="form-group">
+
+                        <label for="customerAddress">
+                            Address
+                        </label>
+
+                        <textarea
+                            id="customerAddress"
+                            rows="4"
+                            placeholder="Enter your complete delivery address"
+                            required></textarea>
+
+                    </div>
+
+
+
+                    <!-- CITY + PINCODE -->
+
+                    <div class="checkout-row">
+
+
+                        <div class="form-group">
+
+                            <label for="customerCity">
+                                City
+                            </label>
+
+                            <input
+                                type="text"
+                                id="customerCity"
+                                placeholder="City"
+                                required>
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label for="customerPincode">
+                                Pincode
+                            </label>
+
+                            <input
+                                type="text"
+                                id="customerPincode"
+                                placeholder="6 digit pincode"
+                                pattern="[0-9]{6}"
+                                maxlength="6"
+                                required>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- =========================
+                         PAYMENT INFORMATION
+                    ========================= -->
+
+                    <div class="checkout-payment-info">
+
+                        <p class="eyebrow">
+                            PAYMENT
+                        </p>
+
+                        <h3>
+                            Pay Securely with UPI
+                        </h3>
+
+                        <p>
+                            Scan the QR code shown in the order
+                            summary. Your total bill amount will
+                            automatically be included in the UPI
+                            payment request.
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- WHATSAPP BUTTON -->
+
+                    <button
+                        type="submit"
+                        class="submit-btn">
+
+                        💬 Place Order on WhatsApp
+
+                    </button>
+
+
+                </form>
+
+            </div>
+
+
+
+            <!-- =========================
+                 ORDER SUMMARY
+            ========================= -->
+
+            <div class="checkout-summary">
+
+
+                <p class="eyebrow">
+                    YOUR ORDER
+                </p>
+
+
+                <h2>
+                    Order Summary
+                </h2>
+
+
+
+                <!-- PRODUCTS -->
+
+                <div id="checkoutItems">
+
+                </div>
+
+
+
+                <!-- TOTAL -->
+
+                <div class="checkout-total">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <strong id="checkoutTotal">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+
+                <!-- =========================
+                     UPI PAYMENT
+                ========================= -->
+
+                <div class="payment-box">
+
+
+                    <p class="eyebrow">
+                        SCAN & PAY
+                    </p>
+
+
+                    <h3>
+
+                        Pay ₹<span id="qrAmount">
+                            0
+                        </span>
+
+                    </h3>
+
+
+                    <p class="payment-text">
+
+                        Scan this QR code using your
+                        UPI payment app.
+
+                    </p>
+
+
+
+                    <!-- DYNAMIC QR CODE -->
+
+                    <div
+                        id="upiQRCode"
+                        class="qr-wrapper">
+
+                    </div>
+
+
+
+                    <p class="payment-note">
+
+                        📱 Google Pay • PhonePe • Paytm • BHIM
+
+                    </p>
+
+
+                    <p class="payment-confirm">
+
+                        The amount shown in the QR code
+                        matches your current order total.
+
+                    </p>
+
+
+                </div>
+
+
+
+                <!-- =========================
+                     STATIC QR BACKUP
+                ========================= -->
+
+                <div class="static-qr-option">
+
+                    <p>
+                        Prefer to use our regular QR?
+                    </p>
+
+
+                    <img
+                        src="images/upiqr.png"
+                        alt="Radha Boutique UPI QR Code">
+
+
+                    <small>
+                        If your UPI app does not support
+                        the dynamic QR, use this QR.
+                    </small>
+
+                </div>
+
+
+
+                <!-- BACK TO CART -->
+
+                <a
+                    href="cart.html"
+                    class="continue-shopping">
+
+                    ← Back to Cart
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="site-footer">
+
+
+    <div class="footer-content">
+
+
+        <div>
+
+            <h3>
+                Radha Boutique
+            </h3>
+
+            <p>
+                Elegant fashion for every occasion.
+            </p>
+
+        </div>
+
+
+
+        <div>
+
+            <h4>
+                Quick Links
+            </h4>
+
+
+            <a href="index.html">
+                Home
+            </a>
+
+
+            <a href="shop.html">
+                Shop
+            </a>
+
+
+            <a href="about.html">
+                About
+            </a>
+
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </div>
+
+
+
+        <div>
+
+            <h4>
+                Contact
+            </h4>
+
+
+            <p>
+                📍 Mulund West, Mumbai
+            </p>
+
+
+            <p>
+                📞 8355907193
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="footer-bottom">
+
+        © 2026 Radha Boutique. All Rights Reserved.
+
+    </div>
+
+
+</footer>
+
+
+
+<!-- =========================
+     JAVASCRIPT FILES
+========================= -->
+
+<script src="products.js"></script>
+
+<script src="script.js"></script>
+
+
+
+<script>
+
+/* =====================================================
+   RADHA BOUTIQUE - DYNAMIC UPI PAYMENT
+===================================================== */
+
+
+/*
+   IMPORTANT:
+
+   CHANGE THIS TO THE REAL UPI ID
+   THAT SHOULD RECEIVE THE PAYMENT.
+
+   Example:
+
+   const SHOP_UPI_ID = "yourshop@oksbi";
+
+   Do NOT leave YOUR_UPI_ID@bank
+   when you publish the website.
+*/
+
+const SHOP_UPI_ID = "YOUR_UPI_ID@bank";
+
+
+const SHOP_NAME = "Radha Boutique";
+
+
+
+/* =====================================================
+   CALCULATE CART TOTAL
+===================================================== */
+
+function getCheckoutTotalForQR() {
+
+    const cart = getCart();
+
+    const productsList = getProducts();
+
+    let total = 0;
+
+
+    cart.forEach(function(item) {
+
+
+        const product = productsList.find(function(product) {
+
+            return String(product.id) === String(item.id);
+
+        });
+
+
+        if (product) {
+
+            const quantity =
+                Number(item.quantity) || 1;
+
+
+            const price =
+                Number(product.price) || 0;
+
+
+            total += price * quantity;
+
+        }
+
+    });
+
+
+    return total;
+
+}
+
+
+
+/* =====================================================
+   GENERATE UPI QR CODE
+===================================================== */
+
+function generateUPIQRCode() {
+
+
+    const total =
+        getCheckoutTotalForQR();
+
+
+    /* Show amount */
+
+    const amountElement =
+        document.getElementById("qrAmount");
+
+
+    if (amountElement) {
+
+        amountElement.textContent =
+            total.toLocaleString("en-IN");
+
+    }
+
+
+
+    /* QR container */
+
+    const qrContainer =
+        document.getElementById("upiQRCode");
+
+
+    if (!qrContainer) {
+
+        return;
+
+    }
+
+
+
+    /* Remove old QR */
+
+    qrContainer.innerHTML = "";
+
+
+
+    /* Empty cart */
+
+    if (total <= 0) {
+
+        qrContainer.innerHTML = `
+
+            <div class="empty-payment">
+
+                🛒
+
+                <p>
+                    Your cart is empty.
+                </p>
+
+                <a href="shop.html">
+                    Continue Shopping
+                </a>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+
+    /* Check UPI ID */
+
+    if (
+        !SHOP_UPI_ID ||
+        SHOP_UPI_ID === "rkhushal882-2@okicici"
+    ) {
+
+        qrContainer.innerHTML = `
+
+            <div class="upi-error">
+
+                <strong>
+                    UPI ID not configured
+                </strong>
+
+                <p>
+                    Add the shop's real UPI ID
+                    in checkout.html.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+
+    /*
+       UPI PAYMENT URL
+
+       am = amount
+
+       cu = currency
+    */
+
+
+    const upiURL =
+
+        "upi://pay" +
+
+        "?pa=" +
+        encodeURIComponent(SHOP_UPI_ID) +
+
+        "&pn=" +
+        encodeURIComponent(SHOP_NAME) +
+
+        "&am=" +
+        encodeURIComponent(total.toFixed(2)) +
+
+        "&cu=INR";
+
+
+
+    /* Generate QR */
+
+    if (typeof QRCode !== "undefined") {
+
+
+        new QRCode(
+
+            qrContainer,
+
+            {
+
+                text: upiURL,
+
+                width: 220,
+
+                height: 220,
+
+                correctLevel:
+                    QRCode.CorrectLevel.H
+
+            }
+
+        );
+
+
+    } else {
+
+
+        qrContainer.innerHTML = `
+
+            <p>
+                QR code could not be loaded.
+            </p>
+
+        `;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   RUN AFTER PAGE LOAD
+===================================================== */
+
+document.addEventListener(
+
+    "DOMContentLoaded",
+
+    function() {
+
+
+        /*
+           Wait briefly for script.js
+           to load cart/products.
+        */
+
+        setTimeout(
+
+            function() {
+
+                generateUPIQRCode();
+
+            },
+
+            300
+
+        );
+
+
+    }
+
+);
+
+
+
+/* =====================================================
+   UPDATE QR WHEN PAGE BECOMES VISIBLE AGAIN
+===================================================== */
+
+window.addEventListener(
+
+    "pageshow",
+
+    function() {
+
+        setTimeout(
+
+            function() {
+
+                generateUPIQRCode();
+
+            },
+
+            100
+
+        );
+
+    }
+
+);
+
+</script>
+
+
+
+<!-- =========================
+     CHECKOUT PAGE CSS
+========================= -->
+
+<style>
+
+
+/* =========================================
+   PAYMENT INFORMATION
+========================================= */
+
+.checkout-payment-info {
+
+    margin-top: 25px;
+
+    padding: 20px;
+
+    background: #faf7f3;
+
+    border: 1px solid var(--border);
+
+}
+
+
+.checkout-payment-info h3 {
+
+    margin: 5px 0 8px;
+
+    color: var(--brown-dark);
+
+}
+
+
+.checkout-payment-info p:last-child {
+
+    margin: 0;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    color: var(--gray);
+
+}
+
+
+
+/* =========================================
+   PAYMENT BOX
+========================================= */
+
+.payment-box {
+
+    margin-top: 25px;
+
+    padding: 25px 20px;
+
+    background: #faf7f3;
+
+    border: 1px solid var(--border);
+
+    text-align: center;
+
+}
+
+
+.payment-box h3 {
+
+    margin: 5px 0 8px;
+
+    color: var(--brown-dark);
+
+    font-family: var(--heading-font);
+
+    font-size: 25px;
+
+}
+
+
+.payment-text {
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    color: var(--gray);
+
+    margin-bottom: 18px;
+
+}
+
+
+
+/* =========================================
+   QR CODE
+========================================= */
+
+.qr-wrapper {
+
+    width: 240px;
+
+    height: 240px;
+
+    margin: 0 auto 15px;
+
+    padding: 10px;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.qr-wrapper img {
+
+    width: 220px;
+
+    height: 220px;
+
+}
+
+
+
+/* =========================================
+   PAYMENT NOTE
+========================================= */
+
+.payment-note {
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    color: var(--brown-dark);
+
+    margin-bottom: 10px;
+
+}
+
+
+.payment-confirm {
+
+    font-size: 12px;
+
+    color: var(--gray);
+
+    line-height: 1.6;
+
+    margin: 0;
+
+}
+
+
+
+/* =========================================
+   STATIC QR BACKUP
+========================================= */
+
+.static-qr-option {
+
+    margin-top: 18px;
+
+    padding: 15px;
+
+    border: 1px solid var(--border);
+
+    text-align: center;
+
+}
+
+
+.static-qr-option p {
+
+    font-size: 12px;
+
+    color: var(--gray);
+
+    margin-bottom: 10px;
+
+}
+
+
+.static-qr-option img {
+
+    width: 120px;
+
+    height: 120px;
+
+    object-fit: contain;
+
+    display: block;
+
+    margin: 0 auto 10px;
+
+}
+
+
+.static-qr-option small {
+
+    display: block;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+    color: var(--gray);
+
+}
+
+
+
+/* =========================================
+   EMPTY CART PAYMENT
+========================================= */
+
+.empty-payment {
+
+    font-size: 13px;
+
+    color: var(--gray);
+
+}
+
+
+.empty-payment p {
+
+    margin: 8px 0;
+
+}
+
+
+.empty-payment a {
+
+    color: var(--brown);
+
+    font-weight: 600;
+
+}
+
+
+
+/* =========================================
+   UPI ERROR
+========================================= */
+
+.upi-error {
+
+    padding: 20px;
+
+    font-size: 13px;
+
+    color: #8a5a44;
+
+}
+
+
+.upi-error strong {
+
+    display: block;
+
+    margin-bottom: 6px;
+
+}
+
+
+.upi-error p {
+
+    margin: 0;
+
+}
+
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+
+    .checkout-section {
+
+        padding-left: 3%;
+
+        padding-right: 3%;
+
+    }
+
+
+    .checkout-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+
+    }
+
+
+    .payment-box {
+
+        padding: 20px 10px;
+
+    }
+
+
+    .qr-wrapper {
+
+        width: 220px;
+
+        height: 220px;
+
+    }
+
+
+    .qr-wrapper img {
+
+        width: 200px;
+
+        height: 200px;
+
+    }
+
+
+    .static-qr-option img {
+
+        width: 100px;
+
+        height: 100px;
+
+    }
+
+}
+
+</style>
+
+
+</body>
+
+</html>

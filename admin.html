@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel | Radha Boutique</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+<nav>
+
+<h1>Radha Boutique Admin</h1>
+
+<ul>
+
+<li><a href="index.html">Home</a></li>
+<li><a href="shop.html">Shop</a></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<section class="checkout">
+
+<h1>Add New Product</h1>
+
+<input type="text" id="pname" placeholder="Product Name">
+
+<input type="number" id="price" placeholder="Price">
+
+<input type="number" id="oldprice" placeholder="Old Price">
+
+<input type="text" id="image" placeholder="Image Path">
+
+<input type="text" id="category" placeholder="Category">
+
+<button onclick="addProduct()" class="checkout-btn">
+Add Product
+</button>
+
+</section>
+
+<script src="products.js"></script>
+<script src="script.js"></script>
+
+</body>
+
+</html>
