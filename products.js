@@ -177,7 +177,21 @@ images: [
 "images/cordset-beige.jpeg"
 ]
 
+},
+{
+    id: 10,
+    name: "UPI Test Product",
+    price: 1,
+    oldPrice: 1,
+    image: "images/logo.png",
+    description: "Temporary product for testing UPI payment.",
+    images: [
+        "images/logo.png"
+    ],
+    sizes: ["Free Size"],
+    category: "Test"
 }
+
 
 ];
 
