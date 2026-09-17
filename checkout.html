@@ -808,76 +808,59 @@
 <script src="products.js"></script>
 <script src="script.js"></script>
 
-
 <script>
 
-/* =====================================================
-   RADHA BOUTIQUE
-   DYNAMIC UPI PAYMENT
-===================================================== */
-
-
-/* =========================
-   SHOP UPI DETAILS
-========================= */
+/* =========================================
+   RADHA BOUTIQUE - UPI PAYMENT
+========================================= */
 
 const SHOP_UPI_ID = "rkhushal882-2@okicici";
-
 const SHOP_NAME = "Radha Boutique";
 
 
-/* =========================
+/* =========================================
    GET CART
-========================= */
+========================================= */
 
 function getCheckoutCart() {
-
     try {
-
-        return JSON.parse(
-            localStorage.getItem("cart")
-        ) || [];
-
+        const cart = JSON.parse(localStorage.getItem("cart"));
+        return Array.isArray(cart) ? cart : [];
     } catch (error) {
-
+        console.log("Cart error:", error);
         return [];
-
     }
-
 }
 
 
-/* =========================
-   GET PRODUCT LIST
-========================= */
+/* =========================================
+   GET PRODUCTS
+========================================= */
 
 function getCheckoutProducts() {
 
-    if (typeof products !== "undefined") {
-
+    if (typeof products !== "undefined" && Array.isArray(products)) {
         return products;
-
     }
 
     return [];
-
 }
 
 
-/* =========================
+/* =========================================
    CALCULATE TOTAL
-========================= */
+========================================= */
 
 function getCheckoutTotalForQR() {
 
     const cart = getCheckoutCart();
-
     const productsList = getCheckoutProducts();
 
     let total = 0;
 
-
     cart.forEach(function(item) {
+
+        /* Find product */
 
         const product = productsList.find(function(product) {
 
@@ -886,13 +869,28 @@ function getCheckoutTotalForQR() {
         });
 
 
+        /* Product found */
+
         if (product) {
 
-            const quantity =
-                Number(item.quantity) || 1;
+            const price = Number(product.price) || 0;
 
-            const price =
-                Number(product.price) || 0;
+            const quantity = Number(item.quantity) || 1;
+
+            total += price * quantity;
+
+        }
+
+        /*
+           If cart already contains price,
+           use it as backup.
+        */
+
+        else if (item.price) {
+
+            const price = Number(item.price) || 0;
+
+            const quantity = Number(item.quantity) || 1;
 
             total += price * quantity;
 
@@ -900,61 +898,46 @@ function getCheckoutTotalForQR() {
 
     });
 
-
     return total;
-
 }
 
 
-/* =========================
-   GENERATE UPI URL
-========================= */
+/* =========================================
+   CREATE UPI URL
+========================================= */
 
 function createUPIURL(total) {
 
-    const transactionReference =
-        "RB" + Date.now();
-
+    const transactionReference = "RB" + Date.now();
 
     return (
         "upi://pay" +
-
-        "?pa=" +
-        encodeURIComponent(SHOP_UPI_ID) +
-
-        "&pn=" +
-        encodeURIComponent(SHOP_NAME) +
-
-        "&tr=" +
-        encodeURIComponent(transactionReference) +
-
-        "&tn=" +
-        encodeURIComponent("Radha Boutique Order") +
-
-        "&am=" +
-        encodeURIComponent(total.toFixed(2)) +
-
+        "?pa=" + encodeURIComponent(SHOP_UPI_ID) +
+        "&pn=" + encodeURIComponent(SHOP_NAME) +
+        "&tr=" + encodeURIComponent(transactionReference) +
+        "&tn=" + encodeURIComponent("Radha Boutique Order") +
+        "&am=" + encodeURIComponent(total.toFixed(2)) +
         "&cu=INR"
     );
-
 }
 
 
-/* =========================
-   GENERATE QR
-========================= */
+/* =========================================
+   GENERATE QR CODE
+========================================= */
 
 function generateUPIQRCode() {
 
-    const total =
-        getCheckoutTotalForQR();
+    const total = getCheckoutTotalForQR();
+
+    console.log("Cart:", getCheckoutCart());
+    console.log("Products:", getCheckoutProducts());
+    console.log("Total:", total);
 
 
-    /* UPDATE AMOUNT */
+    /* Update amount */
 
-    const amountElement =
-        document.getElementById("qrAmount");
-
+    const amountElement = document.getElementById("qrAmount");
 
     if (amountElement) {
 
@@ -964,127 +947,91 @@ function generateUPIQRCode() {
     }
 
 
-    /* UPDATE TOTAL */
+    /* Update checkout total */
 
     const totalElement =
         document.getElementById("checkoutTotal");
 
-
     if (totalElement) {
 
         totalElement.textContent =
-            "₹" +
-            total.toLocaleString("en-IN");
+            "₹" + total.toLocaleString("en-IN");
 
     }
 
 
-    /* QR CONTAINER */
+    /* QR container */
 
     const qrContainer =
         document.getElementById("upiQRCode");
 
-
     if (!qrContainer) {
-
         return;
-
     }
 
 
-    /* REMOVE OLD QR */
+    /* Remove old QR */
 
     qrContainer.innerHTML = "";
 
 
-    /* EMPTY CART */
+    /* Empty cart */
 
     if (total <= 0) {
 
         qrContainer.innerHTML = `
-
             <div class="empty-payment">
-
                 🛒
-
-                <p>
-                    Your cart is empty.
-                </p>
-
-                <a href="shop.html">
-                    Continue Shopping
-                </a>
-
+                <p>Your cart is empty.</p>
+                <a href="shop.html">Continue Shopping</a>
             </div>
-
         `;
 
         return;
-
     }
 
 
-    /* CHECK UPI ID */
+    /* Check UPI ID */
 
-    if (
-        !SHOP_UPI_ID ||
-        SHOP_UPI_ID === "rkhushal882-2@okicici"
-    ) {
+    if (!SHOP_UPI_ID) {
 
         qrContainer.innerHTML = `
-
             <div class="empty-payment">
-
-                <strong>
-                    UPI ID not configured.
-                </strong>
-
+                <strong>UPI ID is not configured.</strong>
             </div>
-
         `;
 
         return;
-
     }
 
 
-    /* CREATE UPI URL */
+    /* Create UPI payment URL */
 
-    const upiURL =
-        createUPIURL(total);
+    const upiURL = createUPIURL(total);
+
+    console.log("UPI URL:", upiURL);
 
 
-    /* CREATE QR */
+    /* Generate QR */
 
     if (typeof QRCode !== "undefined") {
 
-        new QRCode(
+        new QRCode(qrContainer, {
 
-            qrContainer,
+            text: upiURL,
 
-            {
+            width: 220,
 
-                text: upiURL,
+            height: 220,
 
-                width: 220,
+            correctLevel: QRCode.CorrectLevel.H
 
-                height: 220,
-
-                correctLevel:
-                    QRCode.CorrectLevel.H
-
-            }
-
-        );
+        });
 
     } else {
 
         qrContainer.innerHTML = `
-
-            <p>
-                QR code could not be loaded.
-            </p>
-
+            <p>QR code could not be loaded.</p>
         `;
 
     }
@@ -1092,56 +1039,27 @@ function generateUPIQRCode() {
 }
 
 
-/* =====================================================
+/* =========================================
    PAY ONLINE
-===================================================== */
+========================================= */
 
 function payOnline() {
 
     const total = getCheckoutTotalForQR();
 
-    if (total <= 0) {
-        alert("Your cart is empty.");
-        return;
-    }
+    console.log("Payment amount:", total);
 
-    const upiURL =
-        "upi://pay" +
-        "?pa=" + encodeURIComponent("rkhushal882-2@okicici") +
-        "&pn=" + encodeURIComponent("Radha Boutique") +
-        "&am=" + encodeURIComponent(total.toFixed(2)) +
-        "&cu=INR" +
-        "&tn=" + encodeURIComponent("Radha Boutique Order");
-
-    // Redirect to UPI payment app
-    window.location.href = upiURL;
-}function payOnline() {
-
-    const total = getCheckoutTotalForQR();
 
     if (total <= 0) {
+
         alert("Your cart is empty.");
+
         return;
+
     }
 
-    const upiURL =
-        "upi://pay" +
-        "?pa=" + encodeURIComponent("rkhushal882-2@okicici") +
-        "&pn=" + encodeURIComponent("Radha Boutique") +
-        "&am=" + encodeURIComponent(total.toFixed(2)) +
-        "&cu=INR" +
-        "&tn=" + encodeURIComponent("Radha Boutique Order");
 
-    // Redirect to UPI payment app
-    window.location.href = upiURL;
-}
-
-    /* CHECK UPI ID */
-
-    if (
-        !SHOP_UPI_ID ||
-        SHOP_UPI_ID === "rkhushal882-2@okicici"
-    ) {
+    if (!SHOP_UPI_ID) {
 
         alert("UPI ID is not configured.");
 
@@ -1150,77 +1068,46 @@ function payOnline() {
     }
 
 
-    /* CREATE PAYMENT URL */
+    const upiURL = createUPIURL(total);
 
-    const upiURL =
-        createUPIURL(total);
+    console.log("Opening UPI:", upiURL);
 
 
-    /*
-       Redirect to UPI app.
-
-       On supported mobile phones,
-       the operating system/browser
-       will open a compatible UPI app
-       or the UPI app chooser.
-    */
+    /* Open UPI app */
 
     window.location.href = upiURL;
 
+}
 
 
-/* =====================================================
+/* =========================================
    PAGE LOAD
-===================================================== */
+========================================= */
 
-document.addEventListener(
+document.addEventListener("DOMContentLoaded", function() {
 
-    "DOMContentLoaded",
+    setTimeout(function() {
 
-    function() {
+        generateUPIQRCode();
 
-        setTimeout(
+    }, 500);
 
-            function() {
-
-                generateUPIQRCode();
-
-            },
-
-            300
-
-        );
-
-    }
-
-);
+});
 
 
-/* =====================================================
-   UPDATE WHEN PAGE RETURNS
-===================================================== */
+/* =========================================
+   PAGE SHOW
+========================================= */
 
-window.addEventListener(
+window.addEventListener("pageshow", function() {
 
-    "pageshow",
+    setTimeout(function() {
 
-    function() {
+        generateUPIQRCode();
 
-        setTimeout(
+    }, 200);
 
-            function() {
-
-                generateUPIQRCode();
-
-            },
-
-            100
-
-        );
-
-    }
-
-);
+});
 
 </script>
 
