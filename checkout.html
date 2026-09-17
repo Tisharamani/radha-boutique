@@ -808,59 +808,76 @@
 <script src="products.js"></script>
 <script src="script.js"></script>
 
+
 <script>
 
-/* =========================================
-   RADHA BOUTIQUE - UPI PAYMENT
-========================================= */
+/* =====================================================
+   RADHA BOUTIQUE
+   DYNAMIC UPI PAYMENT
+===================================================== */
 
-const SHOP_UPI_ID = "rkhushal882-2@okicici";
+
+/* =========================
+   SHOP UPI DETAILS
+========================= */
+
+const SHOP_UPI_ID = "shreevarahiboutique-1@okhdfcbank";
+
 const SHOP_NAME = "Radha Boutique";
 
 
-/* =========================================
+/* =========================
    GET CART
-========================================= */
+========================= */
 
 function getCheckoutCart() {
+
     try {
-        const cart = JSON.parse(localStorage.getItem("cart"));
-        return Array.isArray(cart) ? cart : [];
+
+        return JSON.parse(
+            localStorage.getItem("cart")
+        ) || [];
+
     } catch (error) {
-        console.log("Cart error:", error);
+
         return [];
+
     }
+
 }
 
 
-/* =========================================
-   GET PRODUCTS
-========================================= */
+/* =========================
+   GET PRODUCT LIST
+========================= */
 
 function getCheckoutProducts() {
 
-    if (typeof products !== "undefined" && Array.isArray(products)) {
+    if (typeof products !== "undefined") {
+
         return products;
+
     }
 
     return [];
+
 }
 
 
-/* =========================================
+/* =========================
    CALCULATE TOTAL
-========================================= */
+========================= */
 
 function getCheckoutTotalForQR() {
 
     const cart = getCheckoutCart();
+
     const productsList = getCheckoutProducts();
 
     let total = 0;
 
-    cart.forEach(function(item) {
 
-        /* Find product */
+    cart.forEach(function(item) {
 
         const product = productsList.find(function(product) {
 
@@ -869,28 +886,13 @@ function getCheckoutTotalForQR() {
         });
 
 
-        /* Product found */
-
         if (product) {
 
-            const price = Number(product.price) || 0;
+            const quantity =
+                Number(item.quantity) || 1;
 
-            const quantity = Number(item.quantity) || 1;
-
-            total += price * quantity;
-
-        }
-
-        /*
-           If cart already contains price,
-           use it as backup.
-        */
-
-        else if (item.price) {
-
-            const price = Number(item.price) || 0;
-
-            const quantity = Number(item.quantity) || 1;
+            const price =
+                Number(product.price) || 0;
 
             total += price * quantity;
 
@@ -898,46 +900,61 @@ function getCheckoutTotalForQR() {
 
     });
 
+
     return total;
+
 }
 
 
-/* =========================================
-   CREATE UPI URL
-========================================= */
+/* =========================
+   GENERATE UPI URL
+========================= */
 
 function createUPIURL(total) {
 
-    const transactionReference = "RB" + Date.now();
+    const transactionReference =
+        "RB" + Date.now();
+
 
     return (
         "upi://pay" +
-        "?pa=" + encodeURIComponent(SHOP_UPI_ID) +
-        "&pn=" + encodeURIComponent(SHOP_NAME) +
-        "&tr=" + encodeURIComponent(transactionReference) +
-        "&tn=" + encodeURIComponent("Radha Boutique Order") +
-        "&am=" + encodeURIComponent(total.toFixed(2)) +
+
+        "?pa=" +
+        encodeURIComponent(SHOP_UPI_ID) +
+
+        "&pn=" +
+        encodeURIComponent(SHOP_NAME) +
+
+        "&tr=" +
+        encodeURIComponent(transactionReference) +
+
+        "&tn=" +
+        encodeURIComponent("Radha Boutique Order") +
+
+        "&am=" +
+        encodeURIComponent(total.toFixed(2)) +
+
         "&cu=INR"
     );
+
 }
 
 
-/* =========================================
-   GENERATE QR CODE
-========================================= */
+/* =========================
+   GENERATE QR
+========================= */
 
 function generateUPIQRCode() {
 
-    const total = getCheckoutTotalForQR();
-
-    console.log("Cart:", getCheckoutCart());
-    console.log("Products:", getCheckoutProducts());
-    console.log("Total:", total);
+    const total =
+        getCheckoutTotalForQR();
 
 
-    /* Update amount */
+    /* UPDATE AMOUNT */
 
-    const amountElement = document.getElementById("qrAmount");
+    const amountElement =
+        document.getElementById("qrAmount");
+
 
     if (amountElement) {
 
@@ -947,91 +964,127 @@ function generateUPIQRCode() {
     }
 
 
-    /* Update checkout total */
+    /* UPDATE TOTAL */
 
     const totalElement =
         document.getElementById("checkoutTotal");
 
+
     if (totalElement) {
 
         totalElement.textContent =
-            "₹" + total.toLocaleString("en-IN");
+            "₹" +
+            total.toLocaleString("en-IN");
 
     }
 
 
-    /* QR container */
+    /* QR CONTAINER */
 
     const qrContainer =
         document.getElementById("upiQRCode");
 
+
     if (!qrContainer) {
+
         return;
+
     }
 
 
-    /* Remove old QR */
+    /* REMOVE OLD QR */
 
     qrContainer.innerHTML = "";
 
 
-    /* Empty cart */
+    /* EMPTY CART */
 
     if (total <= 0) {
 
         qrContainer.innerHTML = `
+
             <div class="empty-payment">
+
                 🛒
-                <p>Your cart is empty.</p>
-                <a href="shop.html">Continue Shopping</a>
+
+                <p>
+                    Your cart is empty.
+                </p>
+
+                <a href="shop.html">
+                    Continue Shopping
+                </a>
+
             </div>
+
         `;
 
         return;
+
     }
 
 
-    /* Check UPI ID */
+    /* CHECK UPI ID */
 
-    if (!SHOP_UPI_ID) {
+    if (
+        !SHOP_UPI_ID ||
+        SHOP_UPI_ID === "shreevarahiboutique-1@okhdfcbank"
+    ) {
 
         qrContainer.innerHTML = `
+
             <div class="empty-payment">
-                <strong>UPI ID is not configured.</strong>
+
+                <strong>
+                    UPI ID not configured.
+                </strong>
+
             </div>
+
         `;
 
         return;
+
     }
 
 
-    /* Create UPI payment URL */
+    /* CREATE UPI URL */
 
-    const upiURL = createUPIURL(total);
+    const upiURL =
+        createUPIURL(total);
 
-    console.log("UPI URL:", upiURL);
 
-
-    /* Generate QR */
+    /* CREATE QR */
 
     if (typeof QRCode !== "undefined") {
 
-        new QRCode(qrContainer, {
+        new QRCode(
 
-            text: upiURL,
+            qrContainer,
 
-            width: 220,
+            {
 
-            height: 220,
+                text: upiURL,
 
-            correctLevel: QRCode.CorrectLevel.H
+                width: 220,
 
-        });
+                height: 220,
+
+                correctLevel:
+                    QRCode.CorrectLevel.H
+
+            }
+
+        );
 
     } else {
 
         qrContainer.innerHTML = `
-            <p>QR code could not be loaded.</p>
+
+            <p>
+                QR code could not be loaded.
+            </p>
+
         `;
 
     }
@@ -1039,27 +1092,37 @@ function generateUPIQRCode() {
 }
 
 
-/* =========================================
+/* =====================================================
    PAY ONLINE
-========================================= */
+===================================================== */
 
 function payOnline() {
 
     const total = getCheckoutTotalForQR();
 
-    console.log("Payment amount:", total);
-
-
     if (total <= 0) {
-
         alert("Your cart is empty.");
-
         return;
-
     }
 
+    const upiURL =
+        "upi://pay" +
+        "?pa=" + encodeURIComponent("shreevarahiboutique-1@okhdfcbank") +
+        "&pn=" + encodeURIComponent("Radha Boutique") +
+        "&am=" + encodeURIComponent(total.toFixed(2)) +
+        "&cu=INR" +
+        "&tn=" + encodeURIComponent("Radha Boutique Order");
 
-    if (!SHOP_UPI_ID) {
+    // Redirect to UPI payment app
+    window.location.href = upiURL;
+}
+
+    /* CHECK UPI ID */
+
+    if (
+        !SHOP_UPI_ID ||
+        SHOP_UPI_ID === "shreevarahiboutique-1@okhdfcbank"
+    ) {
 
         alert("UPI ID is not configured.");
 
@@ -1068,46 +1131,77 @@ function payOnline() {
     }
 
 
-    const upiURL = createUPIURL(total);
+    /* CREATE PAYMENT URL */
 
-    console.log("Opening UPI:", upiURL);
+    const upiURL =
+        createUPIURL(total);
 
 
-    /* Open UPI app */
+    /*
+       Redirect to UPI app.
+
+       On supported mobile phones,
+       the operating system/browser
+       will open a compatible UPI app
+       or the UPI app chooser.
+    */
 
     window.location.href = upiURL;
 
-}
 
 
-/* =========================================
+/* =====================================================
    PAGE LOAD
-========================================= */
+===================================================== */
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener(
 
-    setTimeout(function() {
+    "DOMContentLoaded",
 
-        generateUPIQRCode();
+    function() {
 
-    }, 500);
+        setTimeout(
 
-});
+            function() {
+
+                generateUPIQRCode();
+
+            },
+
+            300
+
+        );
+
+    }
+
+);
 
 
-/* =========================================
-   PAGE SHOW
-========================================= */
+/* =====================================================
+   UPDATE WHEN PAGE RETURNS
+===================================================== */
 
-window.addEventListener("pageshow", function() {
+window.addEventListener(
 
-    setTimeout(function() {
+    "pageshow",
 
-        generateUPIQRCode();
+    function() {
 
-    }, 200);
+        setTimeout(
 
-});
+            function() {
+
+                generateUPIQRCode();
+
+            },
+
+            100
+
+        );
+
+    }
+
+);
 
 </script>
 
