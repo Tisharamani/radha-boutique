@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,10 +10,8 @@
 
     <link rel="stylesheet" href="style.css">
 
-    <!-- QR CODE LIBRARY -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
     <style>
+
         /* ================================
            CHECKOUT PAGE
         ================================= */
@@ -175,7 +174,7 @@
         }
 
         .payment-box h3 {
-            margin: 5px 0 8px;
+            margin: 5px 0 10px;
             font-size: 25px;
         }
 
@@ -186,24 +185,10 @@
             margin-bottom: 18px;
         }
 
-        /* QR */
-
-        .qr-wrapper {
-            width: 240px;
-            height: 240px;
-            margin: 0 auto 15px;
-            padding: 10px;
-            background: white;
-            border: 1px solid #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-sizing: border-box;
-        }
-
-        .qr-wrapper img {
-            width: 220px;
-            height: 220px;
+        .payment-note {
+            font-size: 13px;
+            font-weight: 600;
+            margin: 12px 0;
         }
 
         /* PAY ONLINE BUTTON */
@@ -227,53 +212,10 @@
             opacity: 0.9;
         }
 
-        .payment-note {
-            font-size: 12px;
-            font-weight: 600;
-            margin: 10px 0;
-        }
-
-        .payment-confirm {
-            font-size: 12px;
-            color: #777;
-            line-height: 1.5;
-            margin: 10px 0 0;
-        }
-
         .payment-app-note {
             font-size: 11px;
             color: #777;
-            margin: 0;
-        }
-
-        /* STATIC QR */
-
-        .static-qr-option {
-            margin-top: 18px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            text-align: center;
-            border-radius: 8px;
-        }
-
-        .static-qr-option p {
-            font-size: 12px;
-            color: #777;
-        }
-
-        .static-qr-option img {
-            width: 120px;
-            height: 120px;
-            object-fit: contain;
-            display: block;
-            margin: 10px auto;
-        }
-
-        .static-qr-option small {
-            display: block;
-            font-size: 11px;
-            color: #777;
-            line-height: 1.5;
+            margin: 8px 0 0;
         }
 
         /* EMPTY CART */
@@ -281,6 +223,8 @@
         .empty-payment {
             font-size: 13px;
             color: #777;
+            text-align: center;
+            padding: 20px;
         }
 
         .empty-payment a {
@@ -297,7 +241,9 @@
             text-decoration: none;
         }
 
-        /* MOBILE */
+        /* ================================
+           MOBILE
+        ================================= */
 
         @media (max-width: 700px) {
 
@@ -324,26 +270,20 @@
                 padding: 20px 10px;
             }
 
-            .qr-wrapper {
-                width: 220px;
-                height: 220px;
-            }
-
-            .qr-wrapper img {
-                width: 200px;
-                height: 200px;
-            }
-
             .checkout-item img {
                 width: 60px;
                 height: 70px;
             }
+
         }
+
     </style>
+
 </head>
 
 
 <body>
+
 
 <!-- =========================
      HEADER
@@ -354,19 +294,27 @@
     <nav class="navbar">
 
         <div class="brand">
+
             <a href="index.html">
+
                 <img
                     src="images/logo.png"
                     alt="Radha Boutique">
+
             </a>
+
         </div>
+
 
         <button
             class="menu-toggle"
             onclick="toggleMenu()"
             aria-label="Open menu">
+
             ☰
+
         </button>
+
 
         <ul
             class="nav-links"
@@ -393,10 +341,15 @@
             </li>
 
             <li>
+
                 <a href="cart.html">
+
                     🛒 Cart
+
                     <span id="cartCount">0</span>
+
                 </a>
+
             </li>
 
         </ul>
@@ -406,11 +359,13 @@
 </header>
 
 
+
 <!-- =========================
      MAIN
 ========================= -->
 
 <main>
+
 
     <!-- HERO -->
 
@@ -433,6 +388,7 @@
         </div>
 
     </section>
+
 
 
     <!-- CHECKOUT -->
@@ -553,6 +509,7 @@
                     </div>
 
 
+
                     <!-- =========================
                          PAYMENT INFORMATION
                     ========================= -->
@@ -568,12 +525,13 @@
                         </h3>
 
                         <p>
-                            Choose <b>Pay Online</b> to open your UPI
-                            payment app with the order amount already
-                            filled in.
+                            Click <b>Pay Online</b> below to open
+                            a compatible UPI payment app with
+                            your order amount already filled in.
                         </p>
 
                     </div>
+
 
 
                     <!-- WHATSAPP ORDER -->
@@ -589,6 +547,7 @@
                 </form>
 
             </div>
+
 
 
             <!-- =========================
@@ -627,8 +586,9 @@
                 </div>
 
 
+
                 <!-- =========================
-                     UPI PAYMENT
+                     ONLINE PAYMENT
                 ========================= -->
 
                 <div class="payment-box">
@@ -639,27 +599,25 @@
 
 
                     <h3>
+
                         Pay ₹<span id="qrAmount">0</span>
+
                     </h3>
 
 
                     <p class="payment-text">
-                        Pay the exact order amount using UPI.
+
+                        Pay the exact order amount
+                        securely using UPI.
+
                     </p>
 
 
-                    <!-- DYNAMIC QR -->
-
-                    <div
-                        id="upiQRCode"
-                        class="qr-wrapper">
-                    </div>
-
-
-                    <!-- UPI APPS -->
-
                     <p class="payment-note">
-                        📱 GPay • PhonePe • Paytm • BHIM • Other UPI Apps
+
+                        📱 GPay • PhonePe • Paytm • BHIM
+                        • Other UPI Apps
+
                     </p>
 
 
@@ -676,36 +634,13 @@
 
 
                     <p class="payment-app-note">
+
                         Tap to open your UPI payment app
-                    </p>
 
-
-                    <p class="payment-confirm">
-                        The QR code and Pay Online button use your
-                        current order total.
                     </p>
 
                 </div>
 
-
-                <!-- STATIC BACKUP QR -->
-
-                <div class="static-qr-option">
-
-                    <p>
-                        Prefer to scan our regular QR?
-                    </p>
-
-                    <img
-                        src="images/upiqr.png"
-                        alt="Radha Boutique UPI QR Code">
-
-                    <small>
-                        You can scan this QR using any supported
-                        UPI application.
-                    </small>
-
-                </div>
 
 
                 <!-- BACK TO CART -->
@@ -727,6 +662,7 @@
 </main>
 
 
+
 <!-- =========================
      FOOTER
 ========================= -->
@@ -734,6 +670,7 @@
 <footer class="site-footer">
 
     <div class="footer-content">
+
 
         <div>
 
@@ -746,6 +683,7 @@
             </p>
 
         </div>
+
 
 
         <div>
@@ -771,6 +709,7 @@
             </a>
 
         </div>
+
 
 
         <div>
@@ -801,19 +740,22 @@
 </footer>
 
 
+
 <!-- =========================
      JAVASCRIPT FILES
 ========================= -->
 
 <script src="products.js"></script>
+
 <script src="script.js"></script>
+
 
 
 <script>
 
 /* =====================================================
    RADHA BOUTIQUE
-   DYNAMIC UPI PAYMENT
+   UPI PAYMENT
 ===================================================== */
 
 
@@ -821,9 +763,11 @@
    SHOP UPI DETAILS
 ========================= */
 
-const SHOP_UPI_ID = "shreevarahiboutique-1@okhdfcbank";
+const SHOP_UPI_ID =
+    "shreevarahiboutique-1@okhdfcbank";
 
-const SHOP_NAME = "Radha Boutique";
+const SHOP_NAME =
+    "Radha Boutique";
 
 
 /* =========================
@@ -848,55 +792,27 @@ function getCheckoutCart() {
 
 
 /* =========================
-   GET PRODUCT LIST
+   GET TOTAL
 ========================= */
 
-function getCheckoutProducts() {
+function getCheckoutTotal() {
 
-    if (typeof products !== "undefined") {
-
-        return products;
-
-    }
-
-    return [];
-
-}
-
-
-/* =========================
-   CALCULATE TOTAL
-========================= */
-
-function getCheckoutTotalForQR() {
-
-    const cart = getCheckoutCart();
-
-    const productsList = getCheckoutProducts();
+    const cart =
+        getCheckoutCart();
 
     let total = 0;
 
 
     cart.forEach(function(item) {
 
-        const product = productsList.find(function(product) {
+        const price =
+            Number(item.price) || 0;
 
-            return String(product.id) === String(item.id);
+        const quantity =
+            Number(item.quantity) || 1;
 
-        });
-
-
-        if (product) {
-
-            const quantity =
-                Number(item.quantity) || 1;
-
-            const price =
-                Number(product.price) || 0;
-
-            total += price * quantity;
-
-        }
+        total +=
+            price * quantity;
 
     });
 
@@ -907,54 +823,17 @@ function getCheckoutTotalForQR() {
 
 
 /* =========================
-   GENERATE UPI URL
+   UPDATE TOTAL
 ========================= */
 
-function createUPIURL(total) {
-
-    const transactionReference =
-        "RB" + Date.now();
-
-
-    return (
-        "upi://pay" +
-
-        "?pa=" +
-        encodeURIComponent(SHOP_UPI_ID) +
-
-        "&pn=" +
-        encodeURIComponent(SHOP_NAME) +
-
-        "&tr=" +
-        encodeURIComponent(transactionReference) +
-
-        "&tn=" +
-        encodeURIComponent("Radha Boutique Order") +
-
-        "&am=" +
-        encodeURIComponent(total.toFixed(2)) +
-
-        "&cu=INR"
-    );
-
-}
-
-
-/* =========================
-   GENERATE QR
-========================= */
-
-function generateUPIQRCode() {
+function updateCheckoutTotal() {
 
     const total =
-        getCheckoutTotalForQR();
+        getCheckoutTotal();
 
-
-    /* UPDATE AMOUNT */
 
     const amountElement =
         document.getElementById("qrAmount");
-
 
     if (amountElement) {
 
@@ -964,11 +843,8 @@ function generateUPIQRCode() {
     }
 
 
-    /* UPDATE TOTAL */
-
     const totalElement =
         document.getElementById("checkoutTotal");
-
 
     if (totalElement) {
 
@@ -978,232 +854,109 @@ function generateUPIQRCode() {
 
     }
 
-
-    /* QR CONTAINER */
-
-    const qrContainer =
-        document.getElementById("upiQRCode");
-
-
-    if (!qrContainer) {
-
-        return;
-
-    }
-
-
-    /* REMOVE OLD QR */
-
-    qrContainer.innerHTML = "";
-
-
-    /* EMPTY CART */
-
-    if (total <= 0) {
-
-        qrContainer.innerHTML = `
-
-            <div class="empty-payment">
-
-                🛒
-
-                <p>
-                    Your cart is empty.
-                </p>
-
-                <a href="shop.html">
-                    Continue Shopping
-                </a>
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    /* CHECK UPI ID */
-
-    if (
-        !SHOP_UPI_ID ||
-        SHOP_UPI_ID === "shreevarahiboutique-1@okhdfcbank"
-    ) {
-
-        qrContainer.innerHTML = `
-
-            <div class="empty-payment">
-
-                <strong>
-                    UPI ID not configured.
-                </strong>
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    /* CREATE UPI URL */
-
-    const upiURL =
-        createUPIURL(total);
-
-
-    /* CREATE QR */
-
-    if (typeof QRCode !== "undefined") {
-
-        new QRCode(
-
-            qrContainer,
-
-            {
-
-                text: upiURL,
-
-                width: 220,
-
-                height: 220,
-
-                correctLevel:
-                    QRCode.CorrectLevel.H
-
-            }
-
-        );
-
-    } else {
-
-        qrContainer.innerHTML = `
-
-            <p>
-                QR code could not be loaded.
-            </p>
-
-        `;
-
-    }
-
 }
 
 
-/* =====================================================
+/* =========================
    PAY ONLINE
-===================================================== */
+========================= */
 
 function payOnline() {
 
-    const total = getCheckoutTotalForQR();
+    const total =
+        getCheckoutTotal();
+
+
+    /* Empty cart */
 
     if (total <= 0) {
-        alert("Your cart is empty.");
+
+        alert(
+            "Your cart is empty."
+        );
+
         return;
+
     }
+
+
+    /* UPI ID check */
+
+    if (!SHOP_UPI_ID) {
+
+        alert(
+            "UPI ID is not configured."
+        );
+
+        return;
+
+    }
+
+
+    /* Transaction reference */
+
+    const transactionReference =
+        "RB" + Date.now();
+
+
+    /* UPI PAYMENT LINK */
 
     const upiURL =
         "upi://pay" +
-        "?pa=" + encodeURIComponent("shreevarahiboutique-1@okhdfcbank") +
-        "&pn=" + encodeURIComponent("Radha Boutique") +
-        "&am=" + encodeURIComponent(total.toFixed(2)) +
-        "&cu=INR" +
-        "&tn=" + encodeURIComponent("Radha Boutique Order");
 
-    // Redirect to UPI payment app
-    window.location.href = upiURL;
-}
+        "?pa=" +
+        encodeURIComponent(
+            SHOP_UPI_ID
+        ) +
 
-    /* CHECK UPI ID */
+        "&pn=" +
+        encodeURIComponent(
+            SHOP_NAME
+        ) +
 
-    if (
-        !SHOP_UPI_ID ||
-        SHOP_UPI_ID === "shreevarahiboutique-1@okhdfcbank"
-    ) {
+        "&tr=" +
+        encodeURIComponent(
+            transactionReference
+        ) +
 
-        alert("UPI ID is not configured.");
+        "&tn=" +
+        encodeURIComponent(
+            "Radha Boutique Order"
+        ) +
 
-        return;
+        "&am=" +
+        encodeURIComponent(
+            total.toFixed(2)
+        ) +
 
-    }
-
-
-    /* CREATE PAYMENT URL */
-
-    const upiURL =
-        createUPIURL(total);
+        "&cu=INR";
 
 
     /*
-       Redirect to UPI app.
-
-       On supported mobile phones,
-       the operating system/browser
-       will open a compatible UPI app
-       or the UPI app chooser.
+       Open UPI payment app
     */
 
-    window.location.href = upiURL;
+    window.location.href =
+        upiURL;
+
+}
 
 
-
-/* =====================================================
+/* =========================
    PAGE LOAD
-===================================================== */
+========================= */
 
 document.addEventListener(
-
     "DOMContentLoaded",
-
     function() {
 
-        setTimeout(
-
-            function() {
-
-                generateUPIQRCode();
-
-            },
-
-            300
-
-        );
+        updateCheckoutTotal();
 
     }
-
-);
-
-
-/* =====================================================
-   UPDATE WHEN PAGE RETURNS
-===================================================== */
-
-window.addEventListener(
-
-    "pageshow",
-
-    function() {
-
-        setTimeout(
-
-            function() {
-
-                generateUPIQRCode();
-
-            },
-
-            100
-
-        );
-
-    }
-
 );
 
 </script>
+
 
 </body>
 
