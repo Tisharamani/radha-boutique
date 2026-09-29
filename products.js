@@ -181,8 +181,7 @@ images: [
 {
     id: 10,
     name: "UPI Test Product",
-    price: 1,
-    oldPrice: 1,
+    price: 10,
     image: "images/logo.png",
     description: "Temporary product for testing UPI payment.",
     images: [
