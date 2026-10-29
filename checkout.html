@@ -1,23 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Checkout | Radha Boutique</title>
-
     <link rel="stylesheet" href="style.css">
 
     <style>
-
-        /* ================================
-           CHECKOUT PAGE
-        ================================= */
-
         .checkout-section {
-            padding: 50px 5%;
+            padding: 40px 5%;
         }
 
         .checkout-grid {
@@ -25,7 +16,7 @@
             margin: auto;
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
-            gap: 35px;
+            gap: 30px;
             align-items: start;
         }
 
@@ -33,13 +24,8 @@
         .checkout-summary {
             background: #fff;
             border: 1px solid #e6e0da;
-            padding: 30px;
+            padding: 25px;
             border-radius: 12px;
-        }
-
-        .checkout-form-box h2,
-        .checkout-summary h2 {
-            margin-bottom: 25px;
         }
 
         .form-group {
@@ -55,66 +41,17 @@
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 13px;
+            padding: 12px;
             border: 1px solid #d8d0c9;
             border-radius: 7px;
-            font-size: 14px;
             box-sizing: border-box;
-        }
-
-        .form-group textarea {
-            resize: vertical;
+            font-size: 15px;
         }
 
         .checkout-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
-        }
-
-        /* PAYMENT INFORMATION */
-
-        .checkout-payment-info {
-            margin-top: 25px;
-            padding: 20px;
-            background: #faf7f3;
-            border: 1px solid #e6e0da;
-            border-radius: 8px;
-        }
-
-        .checkout-payment-info h3 {
-            margin: 5px 0 8px;
-        }
-
-        .checkout-payment-info p {
-            font-size: 13px;
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        /* SUBMIT BUTTON */
-
-        .submit-btn {
-            width: 100%;
-            margin-top: 20px;
-            padding: 15px;
-            border: none;
-            border-radius: 8px;
-            background: #6b4535;
-            color: white;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .submit-btn:hover {
-            opacity: 0.9;
-        }
-
-        /* ORDER SUMMARY */
-
-        #checkoutItems {
-            margin-bottom: 20px;
         }
 
         .checkout-item {
@@ -141,9 +78,9 @@
         }
 
         .checkout-item-info p {
-            margin: 3px 0;
-            font-size: 12px;
-            color: #777;
+            margin: 4px 0;
+            font-size: 13px;
+            color: #666;
         }
 
         .checkout-total {
@@ -151,7 +88,7 @@
             justify-content: space-between;
             align-items: center;
             margin-top: 20px;
-            padding-top: 18px;
+            padding-top: 15px;
             border-top: 2px solid #e5ddd6;
             font-size: 18px;
         }
@@ -160,817 +97,430 @@
             font-size: 22px;
         }
 
-        /* ================================
-           UPI PAYMENT BOX
-        ================================= */
-
+        .checkout-payment-info,
         .payment-box {
-            margin-top: 25px;
-            padding: 25px 20px;
+            margin-top: 22px;
+            padding: 20px;
             background: #faf7f3;
             border: 1px solid #e6e0da;
             border-radius: 10px;
+        }
+
+        .payment-box {
             text-align: center;
         }
 
         .payment-box h3 {
-            margin: 5px 0 10px;
             font-size: 25px;
+            margin: 10px 0;
         }
 
         .payment-text {
             font-size: 13px;
             line-height: 1.6;
-            color: #777;
-            margin-bottom: 18px;
+            color: #666;
         }
 
         .payment-note {
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 600;
-            margin: 12px 0;
+            margin: 15px 0;
         }
 
-        /* PAY ONLINE BUTTON */
-
-        .upi-pay-btn {
+        .upi-pay-btn,
+        .submit-btn {
             width: 100%;
-            max-width: 320px;
-            padding: 14px 20px;
-            margin: 15px auto 8px;
             display: block;
+            padding: 14px;
+            margin-top: 15px;
             border: none;
             border-radius: 8px;
-            background: #5b8c3a;
             color: white;
             font-size: 16px;
-            font-weight: 700;
+            font-weight: bold;
             cursor: pointer;
         }
 
-        .upi-pay-btn:hover {
+        .upi-pay-btn {
+            background: #5b8c3a;
+        }
+
+        .submit-btn {
+            background: #6b4535;
+        }
+
+        .upi-pay-btn:hover,
+        .submit-btn:hover {
             opacity: 0.9;
         }
 
-        .payment-app-note {
-            font-size: 11px;
-            color: #777;
-            margin: 8px 0 0;
-        }
-
-        /* EMPTY CART */
-
-        .empty-payment {
-            font-size: 13px;
-            color: #777;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .empty-payment a {
-            color: #6b4535;
-            font-weight: 600;
-        }
-
-        /* CONTINUE SHOPPING */
-
         .continue-shopping {
             display: block;
-            margin-top: 20px;
             text-align: center;
-            text-decoration: none;
+            margin-top: 20px;
         }
 
-        /* ================================
-           MOBILE
-        ================================= */
-
         @media (max-width: 700px) {
-
             .checkout-section {
-                padding: 30px 3%;
+                padding: 25px 3%;
             }
 
             .checkout-grid {
                 grid-template-columns: 1fr;
-                gap: 25px;
+                gap: 20px;
             }
 
             .checkout-form-box,
             .checkout-summary {
-                padding: 20px;
+                padding: 18px;
             }
 
             .checkout-row {
                 grid-template-columns: 1fr;
                 gap: 0;
             }
-
-            .payment-box {
-                padding: 20px 10px;
-            }
-
-            .checkout-item img {
-                width: 60px;
-                height: 70px;
-            }
-
         }
-
     </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =========================
-     HEADER
-========================= -->
-
 <header class="site-header">
-
     <nav class="navbar">
-
         <div class="brand">
-
             <a href="index.html">
-
-                <img
-                    src="images/logo.png"
-                    alt="Radha Boutique">
-
+                <img src="images/logo.png" alt="Radha Boutique">
             </a>
-
         </div>
 
-
-        <button
-            class="menu-toggle"
-            onclick="toggleMenu()"
-            aria-label="Open menu">
-
+        <button class="menu-toggle"
+                onclick="toggleMenu()"
+                aria-label="Open menu">
             ☰
-
         </button>
 
-
-        <ul
-            class="nav-links"
-            id="mobileMenu">
-
-            <li>
-                <a href="index.html">Home</a>
-            </li>
-
-            <li>
-                <a href="shop.html">Shop</a>
-            </li>
-
-            <li>
-                <a href="about.html">About</a>
-            </li>
-
-            <li>
-                <a href="contact.html">Contact</a>
-            </li>
-
-            <li>
-                <a href="wishlist.html">❤️ Wishlist</a>
-            </li>
-
-            <li>
-
-                <a href="cart.html">
-
-                    🛒 Cart
-
-                    <span id="cartCount">0</span>
-
-                </a>
-
-            </li>
-
+        <ul class="nav-links" id="mobileMenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="wishlist.html">❤️ Wishlist</a></li>
+            <li><a href="cart.html">🛒 Cart <span id="cartCount">0</span></a></li>
         </ul>
-
     </nav>
-
 </header>
 
-
-
-<!-- =========================
-     MAIN
-========================= -->
-
 <main>
-
-
-    <!-- HERO -->
-
     <section class="page-hero">
-
         <div>
-
-            <p class="eyebrow">
-                COMPLETE YOUR ORDER
-            </p>
-
-            <h1>
-                Checkout
-            </h1>
-
-            <p>
-                Enter your delivery details and complete your payment.
-            </p>
-
+            <p class="eyebrow">COMPLETE YOUR ORDER</p>
+            <h1>Checkout</h1>
+            <p>Enter your delivery details and complete your payment.</p>
         </div>
-
     </section>
-
-
-
-    <!-- CHECKOUT -->
 
     <section class="checkout-section">
-
         <div class="checkout-grid">
 
-
-            <!-- =========================
-                 CUSTOMER DETAILS
-            ========================= -->
-
+            <!-- CUSTOMER DETAILS -->
             <div class="checkout-form-box">
+                <p class="eyebrow">DELIVERY DETAILS</p>
+                <h2>Your Information</h2>
 
-                <p class="eyebrow">
-                    DELIVERY DETAILS
-                </p>
-
-                <h2>
-                    Your Information
-                </h2>
-
-
-                <form
-                    id="checkoutForm"
-                    onsubmit="placeOrder(event)">
-
-
-                    <!-- NAME -->
+                <form id="checkoutForm" onsubmit="placeOrder(event)">
 
                     <div class="form-group">
-
-                        <label for="customerName">
-                            Full Name
-                        </label>
-
-                        <input
-                            type="text"
-                            id="customerName"
-                            placeholder="Enter your full name"
-                            required>
-
+                        <label for="customerName">Full Name</label>
+                        <input type="text" id="customerName"
+                               placeholder="Enter your full name" required>
                     </div>
-
-
-                    <!-- PHONE -->
 
                     <div class="form-group">
-
-                        <label for="customerPhone">
-                            Mobile Number
-                        </label>
-
-                        <input
-                            type="tel"
-                            id="customerPhone"
-                            placeholder="Enter 10 digit mobile number"
-                            pattern="[0-9]{10}"
-                            maxlength="10"
-                            required>
-
+                        <label for="customerPhone">Mobile Number</label>
+                        <input type="tel" id="customerPhone"
+                               placeholder="Enter 10 digit mobile number"
+                               pattern="[0-9]{10}"
+                               maxlength="10" required>
                     </div>
-
-
-                    <!-- ADDRESS -->
 
                     <div class="form-group">
-
-                        <label for="customerAddress">
-                            Address
-                        </label>
-
-                        <textarea
-                            id="customerAddress"
-                            rows="4"
-                            placeholder="Enter your complete delivery address"
-                            required></textarea>
-
+                        <label for="customerAddress">Address</label>
+                        <textarea id="customerAddress" rows="4"
+                                  placeholder="Enter your complete delivery address"
+                                  required></textarea>
                     </div>
-
-
-                    <!-- CITY + PINCODE -->
 
                     <div class="checkout-row">
-
                         <div class="form-group">
-
-                            <label for="customerCity">
-                                City
-                            </label>
-
-                            <input
-                                type="text"
-                                id="customerCity"
-                                placeholder="City"
-                                required>
-
+                            <label for="customerCity">City</label>
+                            <input type="text" id="customerCity"
+                                   placeholder="City" required>
                         </div>
 
-
                         <div class="form-group">
-
-                            <label for="customerPincode">
-                                Pincode
-                            </label>
-
-                            <input
-                                type="text"
-                                id="customerPincode"
-                                placeholder="6 digit pincode"
-                                pattern="[0-9]{6}"
-                                maxlength="6"
-                                required>
-
+                            <label for="customerPincode">Pincode</label>
+                            <input type="text" id="customerPincode"
+                                   placeholder="6 digit pincode"
+                                   pattern="[0-9]{6}"
+                                   maxlength="6" required>
                         </div>
-
                     </div>
-
-
-
-                    <!-- =========================
-                         PAYMENT INFORMATION
-                    ========================= -->
 
                     <div class="checkout-payment-info">
-
-                        <p class="eyebrow">
-                            PAYMENT
-                        </p>
-
-                        <h3>
-                            Pay Securely with UPI
-                        </h3>
-
+                        <h3>Pay Securely with UPI</h3>
                         <p>
-                            Click <b>Pay Online</b> below to open
-                            a compatible UPI payment app with
-                            your order amount already filled in.
+                            Click Pay Online to open a compatible UPI
+                            payment app with your order amount filled in.
                         </p>
-
                     </div>
 
-
-
-                    <!-- WHATSAPP ORDER -->
-
-                    <button
-                        type="submit"
-                        class="submit-btn">
-
+                    <button type="submit" class="submit-btn">
                         💬 Place Order on WhatsApp
-
                     </button>
-
                 </form>
-
             </div>
 
-
-
-            <!-- =========================
-                 ORDER SUMMARY
-            ========================= -->
-
+            <!-- ORDER SUMMARY -->
             <div class="checkout-summary">
+                <p class="eyebrow">YOUR ORDER</p>
+                <h2>Order Summary</h2>
 
-                <p class="eyebrow">
-                    YOUR ORDER
-                </p>
-
-                <h2>
-                    Order Summary
-                </h2>
-
-
-                <!-- PRODUCTS -->
-
-                <div id="checkoutItems">
-                </div>
-
-
-                <!-- TOTAL -->
+                <div id="checkoutItems"></div>
 
                 <div class="checkout-total">
-
-                    <span>
-                        Total
-                    </span>
-
-                    <strong id="checkoutTotal">
-                        ₹0
-                    </strong>
-
+                    <span>Total</span>
+                    <strong id="checkoutTotal">₹0</strong>
                 </div>
 
-
-
-                <!-- =========================
-                     ONLINE PAYMENT
-                ========================= -->
-
+                <!-- UPI PAYMENT -->
                 <div class="payment-box">
+                    <p class="eyebrow">ONLINE PAYMENT</p>
 
-                    <p class="eyebrow">
-                        ONLINE PAYMENT
-                    </p>
-
-
-                    <h3>
-
-                        Pay ₹<span id="qrAmount">0</span>
-
-                    </h3>
-
+                    <h3>Pay ₹<span id="qrAmount">0</span></h3>
 
                     <p class="payment-text">
-
-                        Pay the exact order amount
-                        securely using UPI.
-
+                        Pay your order amount using a compatible UPI app.
                     </p>
-
 
                     <p class="payment-note">
-
-                        📱 GPay • PhonePe • Paytm • BHIM
-                        • Other UPI Apps
-
+                        📱 GPay • PhonePe • Paytm • BHIM • Other UPI Apps
                     </p>
 
-
-                    <!-- PAY ONLINE -->
-
-                    <button
-                        type="button"
-                        class="upi-pay-btn"
-                        onclick="payOnline()">
-
+                    <button type="button"
+                            class="upi-pay-btn"
+                            onclick="payOnline()">
                         💳 Pay Online
-
                     </button>
 
-
-                    <p class="payment-app-note">
-
-                        Tap to open your UPI payment app
-
+                    <p class="payment-text">
+                        On a supported mobile phone, this will request
+                        that your UPI payment app opens.
                     </p>
-
                 </div>
 
-
-
-                <!-- BACK TO CART -->
-
-                <a
-                    href="cart.html"
-                    class="continue-shopping">
-
+                <a href="cart.html" class="continue-shopping">
                     ← Back to Cart
-
                 </a>
-
             </div>
 
         </div>
-
     </section>
-
 </main>
 
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
 <footer class="site-footer">
-
     <div class="footer-content">
-
-
         <div>
-
-            <h3>
-                Radha Boutique
-            </h3>
-
-            <p>
-                Elegant fashion for every occasion.
-            </p>
-
+            <h3>Radha Boutique</h3>
+            <p>Elegant fashion for every occasion.</p>
         </div>
 
-
-
         <div>
-
-            <h4>
-                Quick Links
-            </h4>
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="shop.html">
-                Shop
-            </a>
-
-            <a href="about.html">
-                About
-            </a>
-
-            <a href="contact.html">
-                Contact
-            </a>
-
+            <h4>Quick Links</h4>
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
         </div>
 
-
-
         <div>
-
-            <h4>
-                Contact
-            </h4>
-
-            <p>
-                📍 Mulund West, Mumbai
-            </p>
-
-            <p>
-                📞 8355907193
-            </p>
-
+            <h4>Contact</h4>
+            <p>📍 Mulund West, Mumbai</p>
+            <p>📞 8355907193</p>
         </div>
-
     </div>
-
 
     <div class="footer-bottom">
-
         © 2026 Radha Boutique. All Rights Reserved.
-
     </div>
-
 </footer>
 
-
-
-<!-- =========================
-     JAVASCRIPT FILES
-========================= -->
-
+<!-- LOAD PRODUCT DATA FIRST -->
 <script src="products.js"></script>
-
 <script src="script.js"></script>
 
-
-
 <script>
+/* =========================================
+   RADHA BOUTIQUE CHECKOUT AND UPI PAYMENT
+========================================= */
 
-/* =====================================================
-   RADHA BOUTIQUE
-   UPI PAYMENT
-===================================================== */
+/* Check that this is the correct receiving UPI ID. */
+const SHOP_UPI_ID = "rkhushal882-2@okicici";
+const SHOP_NAME = "Radha Boutique";
 
-
-/* =========================
-   SHOP UPI DETAILS
-========================= */
-
-const SHOP_UPI_ID =
-    "rkhushal882-2@okicici";
-
-const SHOP_NAME =
-    "Radha Boutique";
-
-
-/* =========================
-   GET CART
-========================= */
-
+/* READ CART */
 function getCheckoutCart() {
-
     try {
-
-        return JSON.parse(
-            localStorage.getItem("cart")
-        ) || [];
-
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        return Array.isArray(cart) ? cart : [];
     } catch (error) {
-
+        console.error("Could not read cart:", error);
         return [];
-
     }
-
 }
 
+/* FIND PRODUCT */
+function findCheckoutProduct(item) {
+    if (typeof products === "undefined" || !Array.isArray(products)) {
+        return null;
+    }
 
-/* =========================
-   GET TOTAL
-========================= */
+    return products.find(function(product) {
+        return String(product.id) === String(item.id);
+    });
+}
 
+/* GET PRICE */
+function getItemPrice(item) {
+    const storedPrice = Number(item.price) || 0;
+
+    if (storedPrice > 0) {
+        return storedPrice;
+    }
+
+    const product = findCheckoutProduct(item);
+    return product ? Number(product.price) || 0 : 0;
+}
+
+/* GET TOTAL */
 function getCheckoutTotal() {
+    return getCheckoutCart().reduce(function(total, item) {
+        const price = getItemPrice(item);
+        const quantity = Math.max(1, Number(item.quantity) || 1);
+        return total + price * quantity;
+    }, 0);
+}
 
+/* DISPLAY CART ITEMS */
+function displayCheckoutItems() {
+    const container = document.getElementById("checkoutItems");
     const cart = getCheckoutCart();
 
-    let total = 0;
+    if (!container) return;
 
-    cart.forEach(function(item) {
+    if (cart.length === 0) {
+        container.innerHTML =
+            '<p>Your cart is empty. <a href="shop.html">Continue shopping</a></p>';
+        updateCheckoutTotal();
+        return;
+    }
 
-        let price = Number(item.price) || 0;
-        let quantity = Number(item.quantity) || 1;
+    container.innerHTML = cart.map(function(item) {
+        const product = findCheckoutProduct(item);
+        const name = item.name || (product && product.name) || "Product";
+        const image = item.image || (product && product.image) || "";
+        const price = getItemPrice(item);
+        const quantity = Math.max(1, Number(item.quantity) || 1);
+        const size = item.size || "";
 
-        /*
-         If price is not stored in cart,
-         find the product from products.js
-        */
+        return `
+            <div class="checkout-item">
+                ${image ? `<img src="${image}" alt="${name}">` : ""}
+                <div class="checkout-item-info">
+                    <h4>${escapeCheckoutText(name)}</h4>
+                    ${size ? `<p>Size: ${escapeCheckoutText(size)}</p>` : ""}
+                    <p>Quantity: ${quantity}</p>
+                    <p>₹${(price * quantity).toLocaleString("en-IN")}</p>
+                </div>
+            </div>
+        `;
+    }).join("");
 
-        if (price <= 0 && typeof products !== "undefined") {
-
-            const product = products.find(function(p) {
-
-                return String(p.id) === String(item.id);
-
-            });
-
-            if (product) {
-
-                price = Number(product.price) || 0;
-
-            }
-
-        }
-
-        total += price * quantity;
-
-    });
-
-    return total;
+    updateCheckoutTotal();
 }
 
+/* SAFELY DISPLAY TEXT */
+function escapeCheckoutText(value) {
+    return String(value).replace(/[&<>"']/g, function(character) {
+        const entities = {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+        };
+        return entities[character];
+    });
+}
 
-/* =========================
-   UPDATE TOTAL
-========================= */
-
+/* UPDATE DISPLAYED TOTAL */
 function updateCheckoutTotal() {
+    const total = getCheckoutTotal();
 
-    const total =
-        getCheckoutTotal();
-
-
-    const amountElement =
-        document.getElementById("qrAmount");
+    const amountElement = document.getElementById("qrAmount");
+    const totalElement = document.getElementById("checkoutTotal");
 
     if (amountElement) {
-
-        amountElement.textContent =
-            total.toLocaleString("en-IN");
-
+        amountElement.textContent = total.toLocaleString("en-IN");
     }
-
-
-    const totalElement =
-        document.getElementById("checkoutTotal");
 
     if (totalElement) {
-
-        totalElement.textContent =
-            "₹" +
-            total.toLocaleString("en-IN");
-
+        totalElement.textContent = "₹" + total.toLocaleString("en-IN");
     }
-
 }
 
-
-/* =========================
-   PAY ONLINE
-========================= */
-
+/* OPEN UPI PAYMENT APP */
 function payOnline() {
+    const total = Number(getCheckoutTotal());
 
-    const total =
-        getCheckoutTotal();
-
-
-    /* Empty cart */
-
-    if (total <= 0) {
-
-        alert(
-            "Your cart is empty."
-        );
-
+    if (!Number.isFinite(total) || total <= 0) {
+        alert("Your cart is empty or the total amount is invalid.");
         return;
-
     }
 
+    const upiId = String(SHOP_UPI_ID || "").trim();
 
-    /* UPI ID check */
-
-    if (!SHOP_UPI_ID) {
-
-        alert(
-            "UPI ID is not configured."
-        );
-
+    if (!upiId || !upiId.includes("@")) {
+        alert("Please check the shop's UPI ID.");
         return;
-
     }
 
+    const params = new URLSearchParams({
+        pa: upiId,
+        pn: SHOP_NAME,
+        tr: "RB" + Date.now(),
+        tn: "Radha Boutique Order",
+        am: total.toFixed(2),
+        cu: "INR"
+    });
 
-    /* Transaction reference */
-
-    const transactionReference =
-        "RB" + Date.now();
-
-
-    /* UPI PAYMENT LINK */
-
-    const upiURL =
-        "upi://pay" +
-
-        "?pa=" +
-        encodeURIComponent(
-            SHOP_UPI_ID
-        ) +
-
-        "&pn=" +
-        encodeURIComponent(
-            SHOP_NAME
-        ) +
-
-        "&tr=" +
-        encodeURIComponent(
-            transactionReference
-        ) +
-
-        "&tn=" +
-        encodeURIComponent(
-            "Radha Boutique Order"
-        ) +
-
-        "&am=" +
-        encodeURIComponent(
-            total.toFixed(2)
-        ) +
-
-        "&cu=INR";
-
+    const upiURL = "upi://pay?" + params.toString();
 
     /*
-       Open UPI payment app
+      On supported mobile devices, this asks the operating
+      system to open a compatible UPI payment app.
+
+      The browser cannot guarantee that every UPI app will
+      appear or that the bank will approve the payment.
     */
-
-    window.location.href =
-        upiURL;
-
+    window.location.href = upiURL;
 }
 
-
-/* =========================
-   PAGE LOAD
-========================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function() {
-
-        updateCheckoutTotal();
-
-    }
-);
-
+/* INITIALIZE CHECKOUT */
+document.addEventListener("DOMContentLoaded", function() {
+    displayCheckoutItems();
+    updateCheckoutTotal();
+});
 </script>
 
-
 </body>
-
 </html>
