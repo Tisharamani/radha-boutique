@@ -7,7 +7,8 @@ const PRODUCT_PRICES = {
     6: 1690,
     7: 1690,
     8: 1499,
-    9: 1690
+    9: 1690,
+    10: 10
 };
 
 exports.handler = async (event) => {
