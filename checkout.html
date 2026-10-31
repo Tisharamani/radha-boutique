@@ -6,11 +6,11 @@
     <title>Checkout | Radha Boutique</title>
     <link rel="stylesheet" href="style.css">
 
-    <style>
-        .checkout-section {
-            padding: 40px 5%;
-        }
+    <!-- Razorpay Checkout -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
+    <style>
+        .checkout-section { padding: 40px 5%; }
         .checkout-grid {
             max-width: 1200px;
             margin: auto;
@@ -19,27 +19,19 @@
             gap: 30px;
             align-items: start;
         }
-
-        .checkout-form-box,
-        .checkout-summary {
+        .checkout-form-box, .checkout-summary {
             background: #fff;
             border: 1px solid #e6e0da;
             padding: 25px;
             border-radius: 12px;
         }
-
-        .form-group {
-            margin-bottom: 18px;
-        }
-
+        .form-group { margin-bottom: 18px; }
         .form-group label {
             display: block;
             margin-bottom: 7px;
             font-weight: 600;
         }
-
-        .form-group input,
-        .form-group textarea {
+        .form-group input, .form-group textarea {
             width: 100%;
             padding: 12px;
             border: 1px solid #d8d0c9;
@@ -47,42 +39,33 @@
             box-sizing: border-box;
             font-size: 15px;
         }
-
         .checkout-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
         }
-
         .checkout-item {
             display: flex;
             gap: 12px;
             padding: 12px 0;
             border-bottom: 1px solid #eee;
         }
-
         .checkout-item img {
             width: 65px;
             height: 75px;
             object-fit: cover;
             border-radius: 6px;
         }
-
-        .checkout-item-info {
-            flex: 1;
-        }
-
+        .checkout-item-info { flex: 1; }
         .checkout-item-info h4 {
             margin: 0 0 5px;
             font-size: 14px;
         }
-
         .checkout-item-info p {
             margin: 4px 0;
             font-size: 13px;
             color: #666;
         }
-
         .checkout-total {
             display: flex;
             justify-content: space-between;
@@ -92,43 +75,27 @@
             border-top: 2px solid #e5ddd6;
             font-size: 18px;
         }
-
-        .checkout-total strong {
-            font-size: 22px;
-        }
-
-        .checkout-payment-info,
-        .payment-box {
+        .checkout-total strong { font-size: 22px; }
+        .checkout-payment-info, .payment-box {
             margin-top: 22px;
             padding: 20px;
             background: #faf7f3;
             border: 1px solid #e6e0da;
             border-radius: 10px;
         }
-
-        .payment-box {
-            text-align: center;
-        }
-
-        .payment-box h3 {
-            font-size: 25px;
-            margin: 10px 0;
-        }
-
+        .payment-box { text-align: center; }
+        .payment-box h3 { font-size: 25px; margin: 10px 0; }
         .payment-text {
             font-size: 13px;
             line-height: 1.6;
             color: #666;
         }
-
         .payment-note {
             font-size: 14px;
             font-weight: 600;
             margin: 15px 0;
         }
-
-        .upi-pay-btn,
-        .submit-btn {
+        .upi-pay-btn, .submit-btn {
             width: 100%;
             display: block;
             padding: 14px;
@@ -140,41 +107,29 @@
             font-weight: bold;
             cursor: pointer;
         }
-
-        .upi-pay-btn {
-            background: #5b8c3a;
+        .upi-pay-btn { background: #5b8c3a; }
+        .submit-btn { background: #6b4535; }
+        .upi-pay-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
-
-        .submit-btn {
-            background: #6b4535;
-        }
-
-        .upi-pay-btn:hover,
-        .submit-btn:hover {
-            opacity: 0.9;
-        }
-
         .continue-shopping {
             display: block;
             text-align: center;
             margin-top: 20px;
         }
-
+        #paymentMessage {
+            margin-top: 12px;
+            font-size: 13px;
+            font-weight: 600;
+        }
         @media (max-width: 700px) {
-            .checkout-section {
-                padding: 25px 3%;
-            }
-
+            .checkout-section { padding: 25px 3%; }
             .checkout-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
-
-            .checkout-form-box,
-            .checkout-summary {
-                padding: 18px;
-            }
-
+            .checkout-form-box, .checkout-summary { padding: 18px; }
             .checkout-row {
                 grid-template-columns: 1fr;
                 gap: 0;
@@ -195,9 +150,7 @@
 
         <button class="menu-toggle"
                 onclick="toggleMenu()"
-                aria-label="Open menu">
-            ☰
-        </button>
+                aria-label="Open menu">☰</button>
 
         <ul class="nav-links" id="mobileMenu">
             <li><a href="index.html">Home</a></li>
@@ -228,7 +181,6 @@
                 <h2>Your Information</h2>
 
                 <form id="checkoutForm" onsubmit="placeOrder(event)">
-
                     <div class="form-group">
                         <label for="customerName">Full Name</label>
                         <input type="text" id="customerName"
@@ -239,8 +191,7 @@
                         <label for="customerPhone">Mobile Number</label>
                         <input type="tel" id="customerPhone"
                                placeholder="Enter 10 digit mobile number"
-                               pattern="[0-9]{10}"
-                               maxlength="10" required>
+                               pattern="[0-9]{10}" maxlength="10" required>
                     </div>
 
                     <div class="form-group">
@@ -261,16 +212,16 @@
                             <label for="customerPincode">Pincode</label>
                             <input type="text" id="customerPincode"
                                    placeholder="6 digit pincode"
-                                   pattern="[0-9]{6}"
-                                   maxlength="6" required>
+                                   pattern="[0-9]{6}" maxlength="6" required>
                         </div>
                     </div>
 
                     <div class="checkout-payment-info">
-                        <h3>Pay Securely with UPI</h3>
+                        <h3>Secure Online Payment</h3>
                         <p>
-                            Click Pay Online to open a compatible UPI
-                            payment app with your order amount filled in.
+                            Complete your payment using Razorpay.
+                            After payment is verified, you can send your
+                            order details to Radha Boutique on WhatsApp.
                         </p>
                     </div>
 
@@ -292,37 +243,35 @@
                     <strong id="checkoutTotal">₹0</strong>
                 </div>
 
-                <!-- UPI PAYMENT -->
+                <!-- RAZORPAY PAYMENT -->
                 <div class="payment-box">
                     <p class="eyebrow">ONLINE PAYMENT</p>
 
                     <h3>Pay ₹<span id="qrAmount">0</span></h3>
 
                     <p class="payment-text">
-                        Pay your order amount using a compatible UPI app.
+                        Pay securely using UPI, cards or other
+                        payment methods available through Razorpay.
                     </p>
 
                     <p class="payment-note">
-                        📱 GPay • PhonePe • Paytm • BHIM • Other UPI Apps
+                        🔒 Secure payment powered by Razorpay
                     </p>
 
                     <button type="button"
+                            id="payButton"
                             class="upi-pay-btn"
                             onclick="payOnline()">
                         💳 Pay Online
                     </button>
 
-                    <p class="payment-text">
-                        On a supported mobile phone, this will request
-                        that your UPI payment app opens.
-                    </p>
+                    <p id="paymentMessage" aria-live="polite"></p>
                 </div>
 
                 <a href="cart.html" class="continue-shopping">
                     ← Back to Cart
                 </a>
             </div>
-
         </div>
     </section>
 </main>
@@ -354,18 +303,16 @@
     </div>
 </footer>
 
-<!-- LOAD PRODUCT DATA FIRST -->
+<!-- LOAD WEBSITE FILES -->
 <script src="products.js"></script>
 <script src="script.js"></script>
 
 <script>
 /* =========================================
-   RADHA BOUTIQUE CHECKOUT AND UPI PAYMENT
+   RADHA BOUTIQUE - RAZORPAY CHECKOUT
 ========================================= */
 
-/* Check that this is the correct receiving UPI ID. */
-const SHOP_UPI_ID = "rkhushal882-2@okicici";
-const SHOP_NAME = "Radha Boutique";
+window.rbPaymentVerified = false;
 
 /* READ CART */
 function getCheckoutCart() {
@@ -373,7 +320,7 @@ function getCheckoutCart() {
         const cart = JSON.parse(localStorage.getItem("cart")) || [];
         return Array.isArray(cart) ? cart : [];
     } catch (error) {
-        console.error("Could not read cart:", error);
+        console.error("Cart read error:", error);
         return [];
     }
 }
@@ -389,28 +336,7 @@ function findCheckoutProduct(item) {
     });
 }
 
-/* GET PRICE */
-function getItemPrice(item) {
-    const storedPrice = Number(item.price) || 0;
-
-    if (storedPrice > 0) {
-        return storedPrice;
-    }
-
-    const product = findCheckoutProduct(item);
-    return product ? Number(product.price) || 0 : 0;
-}
-
-/* GET TOTAL */
-function getCheckoutTotal() {
-    return getCheckoutCart().reduce(function(total, item) {
-        const price = getItemPrice(item);
-        const quantity = Math.max(1, Number(item.quantity) || 1);
-        return total + price * quantity;
-    }, 0);
-}
-
-/* DISPLAY CART ITEMS */
+/* DISPLAY CART */
 function displayCheckoutItems() {
     const container = document.getElementById("checkoutItems");
     const cart = getCheckoutCart();
@@ -428,13 +354,13 @@ function displayCheckoutItems() {
         const product = findCheckoutProduct(item);
         const name = item.name || (product && product.name) || "Product";
         const image = item.image || (product && product.image) || "";
-        const price = getItemPrice(item);
+        const price = Number(item.price) || Number(product?.price) || 0;
         const quantity = Math.max(1, Number(item.quantity) || 1);
         const size = item.size || "";
 
         return `
             <div class="checkout-item">
-                ${image ? `<img src="${image}" alt="${name}">` : ""}
+                ${image ? `<img src="${image}" alt="">` : ""}
                 <div class="checkout-item-info">
                     <h4>${escapeCheckoutText(name)}</h4>
                     ${size ? `<p>Size: ${escapeCheckoutText(size)}</p>` : ""}
@@ -448,7 +374,7 @@ function displayCheckoutItems() {
     updateCheckoutTotal();
 }
 
-/* SAFELY DISPLAY TEXT */
+/* ESCAPE TEXT */
 function escapeCheckoutText(value) {
     return String(value).replace(/[&<>"']/g, function(character) {
         const entities = {
@@ -462,63 +388,231 @@ function escapeCheckoutText(value) {
     });
 }
 
-/* UPDATE DISPLAYED TOTAL */
+/* DISPLAY TOTAL */
+function getCheckoutTotal() {
+    return getCheckoutCart().reduce(function(total, item) {
+        const product = findCheckoutProduct(item);
+        const price = Number(item.price) || Number(product?.price) || 0;
+        const quantity = Math.max(1, Number(item.quantity) || 1);
+        return total + price * quantity;
+    }, 0);
+}
+
 function updateCheckoutTotal() {
     const total = getCheckoutTotal();
 
-    const amountElement = document.getElementById("qrAmount");
-    const totalElement = document.getElementById("checkoutTotal");
+    document.getElementById("qrAmount").textContent =
+        total.toLocaleString("en-IN");
 
-    if (amountElement) {
-        amountElement.textContent = total.toLocaleString("en-IN");
-    }
-
-    if (totalElement) {
-        totalElement.textContent = "₹" + total.toLocaleString("en-IN");
-    }
+    document.getElementById("checkoutTotal").textContent =
+        "₹" + total.toLocaleString("en-IN");
 }
 
-/* OPEN UPI PAYMENT APP */
-function payOnline() {
-    const total = Number(getCheckoutTotal());
+/* CUSTOMER DETAILS */
+function getCustomerDetails() {
+    return {
+        name: document.getElementById("customerName").value.trim(),
+        phone: document.getElementById("customerPhone").value.trim(),
+        address: document.getElementById("customerAddress").value.trim(),
+        city: document.getElementById("customerCity").value.trim(),
+        pincode: document.getElementById("customerPincode").value.trim()
+    };
+}
 
-    if (!Number.isFinite(total) || total <= 0) {
-        alert("Your cart is empty or the total amount is invalid.");
+/* PAYMENT MESSAGE */
+function showPaymentMessage(message, isError) {
+    const element = document.getElementById("paymentMessage");
+    element.textContent = message;
+    element.style.color = isError ? "#b00020" : "#287a35";
+}
+
+/* CREATE RAZORPAY ORDER */
+async function payOnline() {
+    const cart = getCheckoutCart();
+    const button = document.getElementById("payButton");
+    const form = document.getElementById("checkoutForm");
+
+    if (!cart.length) {
+        alert("Your cart is empty. Please add a product first.");
         return;
     }
 
-    const upiId = String(SHOP_UPI_ID || "").trim();
-
-    if (!upiId || !upiId.includes("@")) {
-        alert("Please check the shop's UPI ID.");
+    if (!form.reportValidity()) {
         return;
     }
 
-    const params = new URLSearchParams({
-        pa: upiId,
-        pn: SHOP_NAME,
-        tr: "RB" + Date.now(),
-        tn: "Radha Boutique Order",
-        am: total.toFixed(2),
-        cu: "INR"
-    });
+    if (typeof window.Razorpay === "undefined") {
+        alert("Razorpay Checkout could not load. Please refresh the page and try again.");
+        return;
+    }
 
-    const upiURL = "upi://pay?" + params.toString();
+    const customer = getCustomerDetails();
 
-    /*
-      On supported mobile devices, this asks the operating
-      system to open a compatible UPI payment app.
+    button.disabled = true;
+    button.textContent = "Please wait...";
+    showPaymentMessage("Creating your secure payment order...", false);
 
-      The browser cannot guarantee that every UPI app will
-      appear or that the bank will approve the payment.
-    */
-    window.location.href = upiURL;
+    try {
+        const orderResponse = await fetch(
+            "/.netlify/functions/create-order",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    items: cart.map(function(item) {
+                        return {
+                            id: item.id,
+                            quantity: Math.max(1, Number(item.quantity) || 1)
+                        };
+                    })
+                })
+            }
+        );
+
+        const orderData = await orderResponse.json();
+
+        if (!orderResponse.ok) {
+            throw new Error(orderData.error || "Could not create payment order.");
+        }
+
+        if (!orderData.orderId || !orderData.keyId || !orderData.amount) {
+            throw new Error("The server returned incomplete Razorpay order details.");
+        }
+
+        const options = {
+            key: orderData.keyId,
+            amount: orderData.amount,
+            currency: orderData.currency || "INR",
+            name: "Radha Boutique",
+            description: "Purchase from Radha Boutique",
+            order_id: orderData.orderId,
+
+            prefill: {
+                name: customer.name,
+                contact: customer.phone
+            },
+
+            notes: {
+                delivery_city: customer.city,
+                delivery_pincode: customer.pincode
+            },
+
+            theme: {
+                color: "#6b4535"
+            },
+
+            handler: async function(paymentResponse) {
+                await verifyRazorpayPayment(paymentResponse);
+            },
+
+            modal: {
+                ondismiss: function() {
+                    button.disabled = false;
+                    button.textContent = "💳 Pay Online";
+                    showPaymentMessage("Payment window closed. No payment confirmation received.", true);
+                }
+            }
+        };
+
+        const razorpay = new Razorpay(options);
+
+        razorpay.on("payment.failed", function(response) {
+            button.disabled = false;
+            button.textContent = "💳 Pay Online";
+
+            const description =
+                response.error && response.error.description
+                    ? response.error.description
+                    : "Payment failed.";
+
+            showPaymentMessage(description, true);
+        });
+
+        razorpay.open();
+
+    } catch (error) {
+        console.error("Razorpay checkout error:", error);
+        showPaymentMessage(error.message || "Unable to start payment.", true);
+        button.disabled = false;
+        button.textContent = "💳 Pay Online";
+    }
 }
 
-/* INITIALIZE CHECKOUT */
+/* VERIFY PAYMENT ON SERVER */
+async function verifyRazorpayPayment(paymentResponse) {
+    const button = document.getElementById("payButton");
+
+    button.disabled = true;
+    button.textContent = "Verifying payment...";
+    showPaymentMessage("Payment received. Verifying securely...", false);
+
+    try {
+        const response = await fetch(
+            "/.netlify/functions/verify-payment",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    razorpay_order_id: paymentResponse.razorpay_order_id,
+                    razorpay_payment_id: paymentResponse.razorpay_payment_id,
+                    razorpay_signature: paymentResponse.razorpay_signature
+                })
+            }
+        );
+
+        const result = await response.json();
+
+        if (!response.ok || result.verified !== true) {
+            throw new Error(result.error || "Payment verification failed.");
+        }
+
+        window.rbPaymentVerified = true;
+
+        showPaymentMessage(
+            "Payment verified successfully! Payment ID: " +
+            result.paymentId +
+            ". Now click Place Order on WhatsApp.",
+            false
+        );
+
+        button.textContent = "✓ Payment Verified";
+
+    } catch (error) {
+        console.error("Payment verification error:", error);
+
+        window.rbPaymentVerified = false;
+        showPaymentMessage(
+            "We could not verify this payment. Please contact the shop before trying again. " +
+            error.message,
+            true
+        );
+
+        button.disabled = false;
+        button.textContent = "💳 Pay Online";
+    }
+}
+
+/* INITIALIZE PAGE */
 document.addEventListener("DOMContentLoaded", function() {
     displayCheckoutItems();
     updateCheckoutTotal();
+});
+
+/* REQUIRE VERIFIED PAYMENT BEFORE WHATSAPP ORDER */
+const checkoutForm = document.getElementById("checkoutForm");
+
+checkoutForm.addEventListener("submit", function(event) {
+    if (window.rbPaymentVerified !== true) {
+        event.preventDefault();
+        alert("Please complete and verify your online payment before placing your order.");
+        return;
+    }
+
+    /* Existing placeOrder(event) function in script.js will handle WhatsApp order. */
 });
 </script>
 
