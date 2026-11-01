@@ -2873,10 +2873,3 @@ textarea:focus {
     }
 }
 
-/* Hide the Netlify promotional badge */
-#netlify-badge,
-netlify-badge,
-iframe#netlify-badge,
-a[href*="netlify.app"] {
-    display: none !important;
-}
