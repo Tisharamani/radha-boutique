@@ -2457,3 +2457,283 @@ select {
     }
 
 }
+
+/* =====================================
+   RADHA BOUTIQUE - PREMIUM REDESIGN
+   ===================================== */
+
+:root {
+    --brown: #713047;
+    --brown-dark: #48202f;
+    --brown-light: #a65c70;
+    --gold: #c5a15b;
+    --cream: #fbf6f0;
+    --cream-dark: #f1e5dc;
+    --white: #ffffff;
+    --black: #292126;
+    --gray: #776d71;
+    --border: #eadde0;
+    --shadow: 0 12px 32px rgba(72, 32, 47, 0.10);
+}
+
+/* Smooth page appearance */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--white);
+    color: var(--black);
+}
+
+/* Premium header */
+.site-header {
+    background: rgba(255, 255, 255, 0.97);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 3px 18px rgba(72, 32, 47, 0.04);
+}
+
+.navbar {
+    min-height: 86px;
+}
+
+.nav-links a {
+    font-size: 14px;
+    letter-spacing: 0.3px;
+}
+
+/* Elegant homepage banner */
+.hero {
+    background-color: var(--brown-dark);
+    background-position: center;
+    background-size: cover;
+}
+
+.hero h1,
+.section-heading h2,
+.shop-hero h1 {
+    font-family: var(--heading-font);
+    letter-spacing: -0.5px;
+}
+
+/* Premium buttons */
+.btn,
+.cart-btn,
+.details-btn,
+.whatsapp-btn,
+.checkout-btn,
+.add-cart-large,
+.whatsapp-large {
+    border-radius: 6px;
+    transition: all 0.25s ease;
+}
+
+.btn-primary,
+.cart-btn,
+.checkout-btn,
+.add-cart-large {
+    background: var(--brown);
+    color: var(--white);
+}
+
+.btn-primary:hover,
+.cart-btn:hover,
+.checkout-btn:hover,
+.add-cart-large:hover {
+    background: var(--brown-dark);
+    transform: translateY(-2px);
+}
+
+/* Section backgrounds */
+.soft-section,
+.shop-page {
+    background: var(--cream);
+}
+
+.section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.section-heading h2 {
+    color: var(--brown-dark);
+}
+
+/* Elegant category cards */
+.category-card {
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-5px);
+}
+
+/* Premium product cards */
+.product-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--white);
+    box-shadow: 0 4px 18px rgba(72, 32, 47, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    background: var(--cream);
+}
+
+.product-info h3 {
+    color: var(--brown-dark);
+    font-family: var(--heading-font);
+}
+
+.new-price,
+.product-price {
+    color: var(--brown);
+}
+
+/* Clean form fields */
+input,
+textarea,
+select {
+    border-radius: 5px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--brown-light);
+}
+
+/* Elegant footer */
+.footer {
+    background: var(--brown-dark);
+    color: var(--white);
+}
+
+/* Mobile layout */
+@media (max-width: 700px) {
+    .navbar {
+        min-height: 68px;
+    }
+
+    .hero {
+        min-height: 540px;
+    }
+
+    .section {
+        padding-top: 55px;
+        padding-bottom: 55px;
+    }
+
+    .product-card:hover {
+        transform: none;
+    }
+}
+
+/* ===== RADHA BOUTIQUE: PREMIUM ENHANCEMENTS ===== */
+
+/* Smooth page scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Elegant selection colour */
+::selection {
+    background: #713047;
+    color: #ffffff;
+}
+
+/* Premium buttons */
+button,
+.btn,
+.button {
+    transition: background-color 0.25s ease,
+                color 0.25s ease,
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+button:hover,
+.btn:hover,
+.button:hover {
+    transform: translateY(-2px);
+}
+
+/* Product images */
+.product-card img,
+.product-image img {
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover img,
+.product-image:hover img {
+    transform: scale(1.035);
+}
+
+/* Product cards */
+.product-card {
+    border-radius: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease,
+                transform 0.3s ease;
+}
+
+.product-card:hover {
+    box-shadow: 0 10px 28px rgba(70, 35, 45, 0.12);
+}
+
+/* Elegant headings */
+.section-title,
+.section-heading {
+    letter-spacing: 0.5px;
+}
+
+/* Form fields */
+input,
+select,
+textarea {
+    transition: border-color 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #713047;
+    box-shadow: 0 0 0 3px rgba(113, 48, 71, 0.12);
+}
+
+/* Mobile improvements */
+@media (max-width: 600px) {
+    .product-card {
+        border-radius: 9px;
+    }
+
+    button,
+    .btn,
+    .button {
+        max-width: 100%;
+    }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
