@@ -8,6 +8,8 @@
     <meta name="description"
         content="Radha Boutique – Elegant Kurtis, Cord Sets, Denim and Dresses.">
 
+    <meta name="theme-color" content="#48202f">
+
     <title>Radha Boutique | Elegant Fashion</title>
 
     <link rel="stylesheet" href="style.css">
@@ -18,7 +20,6 @@
     <!-- ================= HEADER ================= -->
 
     <header class="site-header">
-
         <nav class="navbar">
 
             <a href="index.html" class="brand">
@@ -36,63 +37,35 @@
 
             <ul id="mobileMenu" class="nav-links">
 
-                <li>
-                    <a href="index.html" class="active">
-                        Home
-                    </a>
-                </li>
-
-                <li>
-                    <a href="shop.html">
-                        Shop
-                    </a>
-                </li>
-
-                <li>
-                    <a href="about.html">
-                        About
-                    </a>
-                </li>
-
-                <li>
-                    <a href="contact.html">
-                        Contact
-                    </a>
-                </li>
-
-                <li>
-                    <a href="wishlist.html">
-                        ♡ Wishlist
-                    </a>
-                </li>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="wishlist.html">♡ Wishlist</a></li>
 
                 <li>
                     <a href="cart.html">
                         Cart
-                        <span class="cart-count" id="cartCount">
-                            0
-                        </span>
+                        <span class="cart-count" id="cartCount">0</span>
                     </a>
                 </li>
 
             </ul>
-
         </nav>
-
     </header>
 
 
-    <!-- ================= HERO ================= -->
+    <!-- ================= MAIN CONTENT ================= -->
 
     <main>
+
+        <!-- HERO SECTION -->
 
         <section class="hero">
 
             <div class="hero-content">
 
-                <span class="eyebrow">
-                    RADHA BOUTIQUE
-                </span>
+                <span class="eyebrow">RADHA BOUTIQUE</span>
 
                 <h1>
                     Style that feels
@@ -106,15 +79,11 @@
 
                 <div class="hero-actions">
 
-                    <a
-                        href="shop.html"
-                        class="btn btn-primary">
+                    <a href="shop.html" class="btn btn-primary">
                         Explore Collection
                     </a>
 
-                    <a
-                        href="#new-arrivals"
-                        class="btn btn-light">
+                    <a href="#new-arrivals" class="btn btn-light">
                         New Arrivals
                     </a>
 
@@ -131,13 +100,9 @@
 
             <div class="section-heading">
 
-                <span class="eyebrow">
-                    SHOP YOUR STYLE
-                </span>
+                <span class="eyebrow">SHOP YOUR STYLE</span>
 
-                <h2>
-                    Curated for every occasion
-                </h2>
+                <h2>Curated for every occasion</h2>
 
                 <p>
                     Find effortless pieces made to bring
@@ -146,74 +111,44 @@
 
             </div>
 
-
             <div class="category-container">
 
-                <a
-                    href="shop.html?category=Kurti"
-                    class="category-card">
+                <a href="shop.html?category=Kurti" class="category-card">
 
-                    <span class="category-number">
-                        01
-                    </span>
+                    <span class="category-number">01</span>
 
-                    <h3>
-                        Kurtis
-                    </h3>
+                    <h3>Kurtis</h3>
 
-                    <p>
-                        Elegant daily and festive wear.
-                    </p>
+                    <p>Elegant daily and festive wear.</p>
 
-                    <span class="category-link">
-                        Explore →
-                    </span>
+                    <span class="category-link">Explore →</span>
 
                 </a>
 
 
-                <a
-                    href="shop.html?category=Cord%20Set"
+                <a href="shop.html?category=Cord%20Set"
                     class="category-card featured">
 
-                    <span class="category-number">
-                        02
-                    </span>
+                    <span class="category-number">02</span>
 
-                    <h3>
-                        Cord Sets
-                    </h3>
+                    <h3>Cord Sets</h3>
 
-                    <p>
-                        Comfortable and effortlessly trendy.
-                    </p>
+                    <p>Comfortable and effortlessly trendy.</p>
 
-                    <span class="category-link">
-                        Explore →
-                    </span>
+                    <span class="category-link">Explore →</span>
 
                 </a>
 
 
-                <a
-                    href="shop.html?category=Denim"
-                    class="category-card">
+                <a href="shop.html?category=Denim" class="category-card">
 
-                    <span class="category-number">
-                        03
-                    </span>
+                    <span class="category-number">03</span>
 
-                    <h3>
-                        Denim
-                    </h3>
+                    <h3>Denim</h3>
 
-                    <p>
-                        Modern outfits for every occasion.
-                    </p>
+                    <p>Modern outfits for every occasion.</p>
 
-                    <span class="category-link">
-                        Explore →
-                    </span>
+                    <span class="category-link">Explore →</span>
 
                 </a>
 
@@ -224,19 +159,13 @@
 
         <!-- ================= NEW ARRIVALS ================= -->
 
-        <section
-            id="new-arrivals"
-            class="products section soft-section">
+        <section id="new-arrivals" class="products section soft-section">
 
             <div class="section-heading">
 
-                <span class="eyebrow">
-                    JUST IN
-                </span>
+                <span class="eyebrow">JUST IN</span>
 
-                <h2>
-                    New Arrivals
-                </h2>
+                <h2>New Arrivals</h2>
 
                 <p>
                     Fresh styles selected for the
@@ -245,20 +174,16 @@
 
             </div>
 
-
-            <!-- Products will be loaded using JavaScript -->
+            <!-- Products are loaded from products.js -->
 
             <div
                 id="homeProductContainer"
                 class="product-container home-products">
             </div>
 
-
             <div class="center-action">
 
-                <a
-                    href="shop.html"
-                    class="btn btn-outline">
+                <a href="shop.html" class="btn btn-outline">
                     View All Collection
                 </a>
 
@@ -267,35 +192,25 @@
         </section>
 
 
-        <!-- ================= WHY US ================= -->
+        <!-- ================= WHY CHOOSE US ================= -->
 
         <section class="why-us section">
 
             <div class="section-heading">
 
-                <span class="eyebrow">
-                    THE RADHA PROMISE
-                </span>
+                <span class="eyebrow">THE RADHA PROMISE</span>
 
-                <h2>
-                    Why choose us?
-                </h2>
+                <h2>Why choose us?</h2>
 
             </div>
 
-
             <div class="why-container">
-
 
                 <article class="why-card">
 
-                    <div class="why-icon">
-                        ✦
-                    </div>
+                    <div class="why-icon">✦</div>
 
-                    <h3>
-                        Premium Quality
-                    </h3>
+                    <h3>Premium Quality</h3>
 
                     <p>
                         Carefully selected fabrics with
@@ -307,13 +222,9 @@
 
                 <article class="why-card">
 
-                    <div class="why-icon">
-                        ◇
-                    </div>
+                    <div class="why-icon">◇</div>
 
-                    <h3>
-                        Latest Fashion
-                    </h3>
+                    <h3>Latest Fashion</h3>
 
                     <p>
                         Fresh, wearable styles selected
@@ -325,13 +236,9 @@
 
                 <article class="why-card">
 
-                    <div class="why-icon">
-                        ₹
-                    </div>
+                    <div class="why-icon">₹</div>
 
-                    <h3>
-                        Great Value
-                    </h3>
+                    <h3>Great Value</h3>
 
                     <p>
                         Stylish outfits at prices designed
@@ -343,13 +250,9 @@
 
                 <article class="why-card">
 
-                    <div class="why-icon">
-                        ↗
-                    </div>
+                    <div class="why-icon">↗</div>
 
-                    <h3>
-                        Easy Ordering
-                    </h3>
+                    <h3>Easy Ordering</h3>
 
                     <p>
                         Simple online shopping with quick
@@ -367,23 +270,17 @@
 
         <section class="visit-banner">
 
-            <span class="eyebrow">
-                COME SAY HELLO
-            </span>
+            <span class="eyebrow">COME SAY HELLO</span>
 
-            <h2>
-                Find your next favourite outfit.
-            </h2>
+            <h2>Find your next favourite outfit.</h2>
 
             <p>
                 Visit Radha Boutique or explore
                 our collection online.
             </p>
 
-            <a
-                href="contact.html"
-                class="btn btn-primary">
-                Visit & Contact Us
+            <a href="contact.html" class="btn btn-primary">
+                Visit &amp; Contact Us
             </a>
 
         </section>
@@ -397,37 +294,20 @@
 
         <div>
 
-            <strong>
-                Radha Boutique
-            </strong>
+            <strong>Radha Boutique</strong>
 
-            <p>
-                Elegant fashion for every occasion.
-            </p>
+            <p>Elegant fashion for every occasion.</p>
 
         </div>
-
 
         <div class="footer-links">
 
-            <a href="shop.html">
-                Shop
-            </a>
-
-            <a href="about.html">
-                About
-            </a>
-
-            <a href="contact.html">
-                Contact
-            </a>
-
-            <a href="cart.html">
-                Cart
-            </a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="cart.html">Cart</a>
 
         </div>
-
 
         <p class="copyright">
             © 2026 Radha Boutique. All rights reserved.
@@ -441,6 +321,20 @@
     <script src="products.js"></script>
     <script src="script.js"></script>
 
-</body>
 
+    <!-- ================= FLOATING WHATSAPP BUTTON ================= -->
+
+    <a
+        href="https://wa.me/918355907193?text=Hello%20Radha%20Boutique!%20I%20want%20to%20know%20more%20about%20your%20collection."
+        class="floating-whatsapp"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat with Radha Boutique on WhatsApp">
+
+        <span class="whatsapp-icon" aria-hidden="true">☏</span>
+        <span>Chat with us</span>
+
+    </a>
+
+</body>
 </html>

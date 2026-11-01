@@ -2737,3 +2737,138 @@ textarea:focus {
         animation-duration: 0.01ms !important;
     }
 }
+
+/* ===== RADHA BOUTIQUE HOMEPAGE UPGRADE ===== */
+
+.hero {
+    min-height: 680px;
+    position: relative;
+    background-color: #48202f;
+    background-position: center;
+    background-size: cover;
+}
+
+.hero-content {
+    max-width: 1400px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.hero h1 {
+    max-width: 750px;
+    font-size: clamp(42px, 6vw, 78px);
+    line-height: 1.12;
+}
+
+.hero p {
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+.hero-actions .btn {
+    min-height: 52px;
+    padding: 15px 28px;
+    border-radius: 5px;
+}
+
+.category-card {
+    border-radius: 12px;
+    min-height: 270px;
+    padding: 32px;
+}
+
+.category-card:hover {
+    border-color: #c5a15b;
+}
+
+.product-card {
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(72, 32, 47, 0.05);
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.why-card {
+    border-radius: 10px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.why-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(72, 32, 47, 0.08);
+}
+
+.visit-banner {
+    padding: 100px 20px;
+}
+
+@media (max-width: 700px) {
+    .hero {
+        min-height: 560px;
+        padding: 35px 0;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .hero-actions {
+        gap: 12px;
+    }
+
+    .category-card {
+        min-height: 210px;
+        padding: 25px;
+    }
+
+    .product-info {
+        padding: 12px;
+    }
+
+    .visit-banner {
+        padding: 65px 20px;
+    }
+}
+
+/* ===== RADHA BOUTIQUE WHATSAPP BUTTON ===== */
+
+.floating-whatsapp {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 20px;
+    background: #25D366;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.floating-whatsapp:hover {
+    transform: translateY(-3px);
+    background: #1ebe5d;
+}
+
+.whatsapp-icon {
+    font-size: 23px;
+    line-height: 1;
+}
+
+@media (max-width: 600px) {
+    .floating-whatsapp {
+        right: 14px;
+        bottom: 14px;
+        padding: 13px 17px;
+        font-size: 14px;
+    }
+}
