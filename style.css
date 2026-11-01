@@ -2837,7 +2837,7 @@ textarea:focus {
 .floating-whatsapp {
     position: fixed;
     right: 22px;
-    bottom: 22px;
+    bottom: 90px;
     z-index: 9999;
     display: flex;
     align-items: center;
